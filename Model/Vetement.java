@@ -30,8 +30,9 @@ public class Vetement extends Article {
     }
 
     public void afficherArticles() {
-        afficherArticles();
-        System
+        super.afficherArticles();
+        System.out.println(" | taille : " + this.getTailleVetement()
+                + " | couleur : " + this.getCouleurVetement());
 
     }
 }
