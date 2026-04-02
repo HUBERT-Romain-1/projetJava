@@ -5,43 +5,42 @@ import java.util.*;
 /**
  * 
  */
-public class Client {
+public class Vendeur {
 
     /**
      * Default constructor
      */
-    public Client() {
+    public Vendeur() {
     }
 
     /**
      * 
      */
-    private static int idClient;
+    private static int idVendeur;
 
     /**
      * 
      */
-    private String nomClient;
+    private String nomVendeur;
 
     /**
      * 
      */
-    private String prenomClient;
+    private String prenomVendeur;
 
     /**
      * 
      */
-    public String email;
-
-    /**
-     * 
-     */
-    private Vente client;
+    private String telephone;
 
     /**
      * 
      */
     private Magasin magasin;
 
+    /**
+     * 
+     */
+    private Set<Vente> listeVente;
 
 }

@@ -2,23 +2,26 @@
 import java.io.*;
 import java.util.*;
 
-public class Articles {
+public class Article {
 
-    public Articles(String nom, double prix, int nbStock, String nomSport) {
+    public Article(String nom, String marque, double prix, int stock, String sport) {
         this.nomProduit = nom;
+        this.marque = marque;
         this.prix = prix;
-        this.stock = nbStock;
-        this.sport = nomSport;
-
-        refProduit++;
-
+        this.stock = stock;
+        this.sport = sport;
     }
 
     private static int refProduit;
     private String nomProduit;
+    private String marque;
     private double prix;
     private int stock;
     private String sport;
+    private Magasin magasin;
+    private Vector<Rayon> listeRayon;
+    private Vector<LigneVente> listeLigneVente;
+    private Vector<Fournisseur> fournisseur;
 
     public static int getRefProduit() {
         return refProduit;
@@ -26,6 +29,10 @@ public class Articles {
 
     public String getnomProduit() {
         return this.nomProduit;
+    }
+
+    public String getMarque() {
+        return this.marque;
     }
 
     public double getPrix() {
@@ -44,8 +51,15 @@ public class Articles {
         this.nomProduit = newNom;
     }
 
+    public void setMarque(String newMarque) {
+        this.marque = newMarque;
+    }
+
     public void setPrix(double newPrix) {
-        this.prix = newPrix;
+        if (newPrix > 0) {
+            this.prix = newPrix;
+        }
+        System.out.println("Prix négatif");
     }
 
     public void setStock(int newstock) {
@@ -57,6 +71,9 @@ public class Articles {
     }
 
     public void afficherArticles() {
-        System.out.println();
+        System.out.println(
+                "nomProduit : " + this.getnomProduit() + " | marque : " + this.marque + " | prix : " + this.getPrix()
+                        + " | stock : " + getStock() + " | sport : " + this.getSport());
     }
+
 }

@@ -5,7 +5,7 @@ import java.util.*;
 /**
  * 
  */
-public class Nourriture extends Articles {
+public class Nourriture extends Article {
 
     /**
      * Default constructor

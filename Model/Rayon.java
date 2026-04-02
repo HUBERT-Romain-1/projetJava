@@ -5,22 +5,22 @@ import java.util.*;
 /**
  * 
  */
-public class Materiel extends Article {
+public class Rayon {
 
     /**
      * Default constructor
      */
-    public Materiel() {
+    public Rayon() {
     }
 
     /**
      * 
      */
-    private double poids;
+    private String nomRayon;
 
     /**
      * 
      */
-    private double dimension;
+    private Set<Article> listeArticle;
 
 }

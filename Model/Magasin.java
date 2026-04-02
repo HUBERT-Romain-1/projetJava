@@ -21,20 +21,29 @@ public class Magasin {
     /**
      * 
      */
+    private String nomMagasin;
 
     /**
      * 
      */
-    public Set<Client> listeClient;
+    private int idMagasin;
 
     /**
      * 
      */
-    public Set<Vente> listeVente;
+    private Set<Vente> listeVente;
 
     /**
      * 
      */
-    public Set<Articles> listeArticles;
+    private Set<Client> listeClient;
+    private Set<Article> listeArticle;
+
+    private Set<Fournisseur> listeFournisseur;
+
+    /**
+     * 
+     */
+    public Set<Vendeur> listeVendeur;
 
 }
