@@ -2,9 +2,6 @@
 import java.io.*;
 import java.util.*;
 
-/**
- * 
- */
 public class Vente {
 
     /**
@@ -31,23 +28,17 @@ public class Vente {
     /**
      * 
      */
-    public Set<Article> v;
-
-    /**
-     * 
-     */
     private Magasin magasin;
 
     /**
      * 
      */
-    private Set<Client> listeVente;
+    private Set<Client> listeClient;
 
     /**
      * 
      */
-    private Set<LigneVente> listeLigne;
-
+    private Set<LigneVente> listeLigneVente;
 
     /**
      * 
@@ -57,6 +48,6 @@ public class Vente {
     /**
      * 
      */
-    public Vendeur vendeur;
+    private Vendeur vendeur;
 
 }

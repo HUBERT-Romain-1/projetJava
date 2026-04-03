@@ -2,48 +2,46 @@
 import java.io.*;
 import java.util.*;
 
-/**
- * 
- */
 public class Magasin {
 
-    /**
-     * Default constructor
-     */
-    public Magasin() {
+    public Magasin(String nom, String adresse) {
+        this.adresse = adresse;
+        this.nomMagasin = nom;
     }
 
-    /**
-     * 
-     */
-    public String adresse;
-
-    /**
-     * 
-     */
     private String nomMagasin;
+    private String adresse;
+    private int idMagasin = 100;
 
-    /**
-     * 
-     */
-    private int idMagasin;
+    private Vector<Vente> listeVente = new Vector<Vente>();
+    private Vector<Client> listeClient = new Vector<Client>();
+    private Vector<Article> listeArticle = new Vector<Article>();
+    private Vector<Fournisseur> listeFournisseur = new Vector<Fournisseur>();
+    private Vector<Vendeur> listeVendeur = new Vector<Vendeur>();
+    private Vector<Rayon> listeRayon = new Vector<Rayon>();
 
-    /**
-     * 
-     */
-    private Set<Vente> listeVente;
+    public void addVente(Vente vente) {
+        listeVente.add(vente);
+    }
 
-    /**
-     * 
-     */
-    private Set<Client> listeClient;
-    private Set<Article> listeArticle;
+    public void addClient(Client c) {
+        listeClient.add(c);
+    }
 
-    private Set<Fournisseur> listeFournisseur;
+    public void addArticle(Article a) {
+        listeArticle.add(a);
+    }
 
-    /**
-     * 
-     */
-    public Set<Vendeur> listeVendeur;
+    public void addFournisseur(Fournisseur fournisseur) {
+        listeFournisseur.add(fournisseur);
+    }
+
+    public void addVendeur(Vendeur vendeur) {
+        listeVendeur.add(vendeur);
+    }
+
+    public void addRayon(Rayon rayon) {
+        listeRayon.add(rayon);
+    }
 
 }

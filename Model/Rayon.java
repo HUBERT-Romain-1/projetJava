@@ -23,4 +23,9 @@ public class Rayon {
      */
     private Set<Article> listeArticle;
 
+    /**
+     * 
+     */
+    public Magasin magasin;
+
 }

@@ -7,41 +7,14 @@ import java.util.*;
  */
 public class Client {
 
-    /**
-     * Default constructor
-     */
     public Client() {
     }
 
-    /**
-     * 
-     */
     private static int idClient;
-
-    /**
-     * 
-     */
     private String nomClient;
-
-    /**
-     * 
-     */
     private String prenomClient;
-
-    /**
-     * 
-     */
-    public String email;
-
-    /**
-     * 
-     */
+    private String email;
     private Vente client;
-
-    /**
-     * 
-     */
     private Magasin magasin;
-
 
 }
