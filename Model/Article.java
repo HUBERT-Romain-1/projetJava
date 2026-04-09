@@ -18,7 +18,7 @@ public class Article {
 
     private static int compteurID = 0;
 
-    private static int refProduit;
+    private int refProduit;
     private String nomProduit;
     private double prix;
     private int stock;
@@ -26,7 +26,6 @@ public class Article {
     private Magasin magasin;
     private Vector<Rayon> listeRayon = new Vector<Rayon>();
     private Vector<LigneVente> listeLigneVente = new Vector<LigneVente>();
-    private Vector<Fournisseur> listeFournisseur = new Vector<Fournisseur>();
 
     public void addRayon(Rayon r) {
         listeRayon.add(r);
@@ -34,9 +33,5 @@ public class Article {
 
     public void addLigneVente(LigneVente vente) {
         listeLigneVente.add(vente);
-    }
-
-    public void addFournisseur(Fournisseur f) {
-        listeFournisseur.add(f);
     }
 }

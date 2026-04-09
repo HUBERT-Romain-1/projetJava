@@ -2,30 +2,14 @@
 import java.io.*;
 import java.util.*;
 
-/**
- * 
- */
 public class Rayon {
-
-    /**
-     * Default constructor
-     */
-    public Rayon() {
+    public Rayon(String rayon, Magasin magasin) {
+        this.nomRayon = rayon;
+        this.magasin = magasin;
     }
 
-    /**
-     * 
-     */
     private String nomRayon;
-
-    /**
-     * 
-     */
-    private Set<Article> listeArticle;
-
-    /**
-     * 
-     */
+    private Vector<Article> listeArticle = new Vector<Article>();
     public Magasin magasin;
 
 }
