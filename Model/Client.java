@@ -2,17 +2,15 @@
 import java.io.*;
 import java.util.*;
 
-/**
- * 
- */
 public class Client {
 
-    public Client(String nom, String prenom, String email, Magasin magasin) {
+    public Client(String nom, String prenom, String email, Magasin m) {
         this.nomClient = nom;
         this.prenomClient = prenom;
         this.email = email;
-        this.magasin = magasin;
+        this.magasin = m;
 
+        m.addClient(this);
         this.idClient = compteurID++;
     }
 
@@ -26,5 +24,46 @@ public class Client {
 
     public void addVente(Vente v) {
         listeVente.add(v);
+    }
+
+    public int getIdClient() {
+        return this.idClient;
+    }
+
+    public String getNomClient() {
+        return this.nomClient;
+    }
+
+    public String getPrenomClient() {
+        return this.prenomClient;
+    }
+
+    public String getEmail() {
+        return this.email;
+    }
+
+    public String getNomMagasin() {
+        return this.magasin.getNomMagasin();
+    }
+
+    public void setNonClient(String newNom) {
+        this.nomClient = newNom;
+    }
+
+    public void setPrenomClient(String newPrenom) {
+        this.prenomClient = newPrenom;
+    }
+
+    public void setEmail(String newEmail) {
+        this.email = newEmail;
+    }
+
+    public String toString() {
+        return "Id Client : " + this.getIdClient()
+                + " | Nom : " + this.getNomClient()
+                + " | Prenom : " + this.getPrenomClient()
+                + " | Email : " + this.getEmail()
+                + " | Magasin : " + this.getNomMagasin()
+                + " | Liste des achats";
     }
 }

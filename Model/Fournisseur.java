@@ -1,4 +1,3 @@
-
 import java.io.*;
 import java.util.*;
 
@@ -7,6 +6,8 @@ public class Fournisseur {
         this.nomFournisseur = fournisseur;
         this.lieuFournisseur = lieu;
         this.magasin = m;
+
+        m.addFournisseur(this);
     }
 
     private String nomFournisseur;
@@ -19,4 +20,21 @@ public class Fournisseur {
         listeArticle.add(a);
     }
 
+    public String getNomFournisseur() {
+        return this.nomFournisseur;
+    }
+
+    public String getAdresseFournisseur() {
+        return this.lieuFournisseur;
+    }
+
+    public String getNomMagasin() {
+        return this.magasin.getNomMagasin();
+    }
+
+    public String toString() {
+        return "nom du fournisseur  " + this.getNomFournisseur()
+                + " | Adresse : " + this.getAdresseFournisseur()
+                + " | nom magasin : " + this.getNomMagasin();
+    }
 }
