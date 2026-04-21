@@ -44,4 +44,60 @@ public class Magasin {
         listeRayon.add(rayon);
     }
 
+    public String getNomMagasin() {
+        return this.nomMagasin;
+    }
+
+    public String getAdresse() {
+        return this.adresse;
+    }
+
+    public void affichageMagasin() {
+        System.out.println("---------- MAGASIN : " + this.nomMagasin.toUpperCase() + " ----------");
+        System.out.println("Adresse : " + this.getAdresse());
+        System.out.println("ID Magasin : " + this.idMagasin);
+
+        System.out.println("\n --- LISTE DES FOURNISSEUR ---\n");
+
+        for (int i = 0; i < listeFournisseur.size(); i++) {
+            Fournisseur f = listeFournisseur.get(i);
+            System.out.println(f.toString());
+
+        }
+
+        System.out.println("\n --- LISTE DES RAYON ---\n");
+
+        for (int i = 0; i < listeRayon.size(); i++) {
+            Rayon r = listeRayon.get(i);
+            System.out.println(r.toString());
+        }
+
+        System.out.println("\n --- LISTE DES CLIENTS ---\n");
+
+        for (int i = 0; i < listeClient.size(); i++) {
+            Client c = listeClient.get(i);
+            System.out.println(c.toString());
+        }
+
+        System.out.println("\n --- LISTE DES ARTICLES ---\n");
+
+        for (int i = 0; i < listeArticle.size(); i++) {
+            Article a = listeArticle.get(i);
+            System.out.println(a.toString());
+        }
+
+        System.out.println("\n --- LISTE DES VENTES ---\n");
+
+        for (int i = 0; i < listeVente.size(); i++) {
+            Vente vente = listeVente.get(i);
+            System.out.println(vente.toString());
+        }
+
+        System.out.println("\n --- LISTE DES VENDEUR ---\n");
+
+        for (int i = 0; i < listeVendeur.size(); i++) {
+            Vendeur v = listeVendeur.get(i);
+            System.out.println(v.toString());
+        }
+    }
 }
