@@ -58,6 +58,10 @@ public class Client {
         this.email = newEmail;
     }
 
+    public Vector<Vente> getHistoriqueAchats() {
+        return this.listeVente;
+    }
+
     public String toString() {
         return "Id Client : " + this.getIdClient()
                 + " | Nom : " + this.getNomClient()

@@ -77,6 +77,29 @@ public class Article {
         return this.magasin;
     }
 
+    public Vector<LigneVente> getListeLigneVente() {
+        return this.listeLigneVente;
+    }
+
+    public int calculerQuantiteVendue() {
+        int totalVendu = 0;
+        for (int i = 0; i < listeLigneVente.size(); i++) {
+            LigneVente lv = this.listeLigneVente.get(i);
+
+            totalVendu = totalVendu + lv.getQuantite();
+        }
+        return totalVendu;
+    }
+
+    public double calculerArgentRapporter() {
+        double totalArgent = 0;
+        for (int i = 0; i < this.listeLigneVente.size(); i++) {
+            LigneVente lv = this.listeLigneVente.get(i);
+            totalArgent += lv.getQuantite() * this.prix;
+        }
+        return totalArgent;
+    }
+
     public String toString() {
         return "Article : " + this.nomProduit
                 + " (Réf : " + this.refProduit + ") | Sport : " + this.sport

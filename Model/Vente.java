@@ -1,10 +1,11 @@
 
 import java.io.*;
 import java.util.*;
+import java.time.*;
 
 public class Vente {
 
-    public Vente(Date dVente, Client c, Vendeur v, Magasin m) {
+    public Vente(LocalDate dVente, Client c, Vendeur v, Magasin m) {
         this.dateVente = dVente;
         this.client = c;
         this.vendeur = v;
@@ -19,7 +20,7 @@ public class Vente {
 
     private static int compteurID = 0;
     private int idVente;
-    private Date dateVente;
+    private LocalDate dateVente;
     private double SommeTotal;
     private Magasin magasin;
     private Vector<LigneVente> listeLigneVente = new Vector<LigneVente>();
@@ -36,7 +37,7 @@ public class Vente {
         return this.idVente;
     }
 
-    public Date getDateVente() {
+    public LocalDate getDateVente() {
         return this.dateVente;
     }
 
@@ -61,22 +62,18 @@ public class Vente {
         if (a.getStock() >= qte) {
             LigneVente lv = new LigneVente(qte, this, a);
 
-            // 3. On l'ajoute à la liste de la vente
             this.listeLigneVente.add(lv);
-
-            // mise a jour du stock
+            a.addLigneVente(lv);
             a.setStock(a.getStock() - qte);
-
-            // mise a jour de la somme a payer
             this.SommeTotal += a.getPrix() * qte;
 
-        } else {
-            System.out.println("Erreur : Stock insuffisant pour " + a.getNomProduit());
         }
     }
 
-    public void validationCommande() {
-
+    public void validerVente() {
+        // this.dateVente = new;
+        vendeur.addVente(this);
+        client.addVente(this);
     }
 
     public String toString() {

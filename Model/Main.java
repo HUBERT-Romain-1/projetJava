@@ -26,11 +26,20 @@ public class Main {
         Vente vente1 = new Vente(null, dimitri, vendeur2, monMagasin);
         vente1.ajouterProduit(ballonFootball, 2);
         vente1.ajouterProduit(velo, 1);
-        vente1.ajouterProduit(barreDeChocolat, 15);
+        vente1.ajouterProduit(barreDeChocolat, 8);
 
         vente1.toString();
+        vente1.validerVente();
         vendeur2.calculCA();
-        monMagasin.affichageMagasin();
+
+        Article top = monMagasin.articlePlusVendu();
+        System.out.println("Le meilleur produit : " + top.getNomProduit()
+                + " avec " + top.calculerQuantiteVendue() + " unités vendues.");
+
+        Article pire = monMagasin.articleMoinsVendu();
+
+        System.out.println("Le pire produit : " + pire.getNomProduit()
+                + " avec " + pire.calculerQuantiteVendue() + " unités vendues.");
 
     }
 }

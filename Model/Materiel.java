@@ -23,7 +23,7 @@ public class Materiel extends Article {
 
     @Override
     public String toString() {
-        return super.toString() + " | Poids : " + poids + "kg | Dim : " + dimension + "cm";
+        return super.toString() + " | Poids : " + poids + "kg | Dimension : " + dimension + "cm";
     }
 
 }

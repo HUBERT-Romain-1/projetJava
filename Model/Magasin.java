@@ -52,6 +52,46 @@ public class Magasin {
         return this.adresse;
     }
 
+    public Article articleMoinsVendu() {
+
+        if (listeArticle.isEmpty()) {
+            return null;
+        }
+
+        Article pireVente = listeArticle.get(0);
+        int miniQuantite = listeArticle.get(0).calculerQuantiteVendue();
+
+        for (int i = 0; i < listeArticle.size(); i++) {
+            if (listeArticle.get(i).calculerQuantiteVendue() < miniQuantite) {
+
+                pireVente = listeArticle.get(i);
+                miniQuantite = listeArticle.get(i).calculerQuantiteVendue();
+            }
+        }
+
+        return pireVente;
+    }
+
+    public Article articlePlusVendu() {
+
+        if (listeArticle.isEmpty()) {
+            return null;
+        }
+
+        Article meilleurVente = listeArticle.get(0);
+        int maxQuantite = listeArticle.get(0).calculerQuantiteVendue();
+
+        for (int i = 0; i < listeArticle.size(); i++) {
+            if (listeArticle.get(i).calculerQuantiteVendue() > maxQuantite) {
+
+                meilleurVente = listeArticle.get(i);
+                maxQuantite = listeArticle.get(i).calculerQuantiteVendue();
+            }
+        }
+
+        return meilleurVente;
+    }
+
     public void affichageMagasin() {
         System.out.println("---------- MAGASIN : " + this.nomMagasin.toUpperCase() + " ----------");
         System.out.println("Adresse : " + this.getAdresse());
