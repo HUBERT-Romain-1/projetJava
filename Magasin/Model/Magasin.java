@@ -1,3 +1,4 @@
+package Magasin.Model;
 
 import java.io.*;
 import java.util.*;
@@ -90,6 +91,62 @@ public class Magasin {
         }
 
         return meilleurVente;
+    }
+
+    public Article articleLePlusRentable() {
+        if (listeArticle.isEmpty()) {
+            return null;
+        }
+
+        Article meilleurArticle = listeArticle.get(0);
+        double maxCA = listeArticle.get(0).calculerArgentRapporter();
+
+        for (int i = 0; i < listeArticle.size(); i++) {
+            if (listeArticle.get(i).calculerArgentRapporter() > maxCA) {
+
+                meilleurArticle = listeArticle.get(i);
+                maxCA = listeArticle.get(i).calculerArgentRapporter();
+            }
+        }
+
+        return meilleurArticle;
+    }
+
+    public Vector<Article> getListeArticleBientotPerime(int nbJour) {
+        Vector<Article> alerte = new Vector<Article>();
+
+        for (int i = 0; i < listeArticle.size(); i++) {
+            Article a = listeArticle.get(i);
+            if (a.perimerBientot(nbJour)) {
+                alerte.add(a);
+            }
+        }
+        return alerte;
+    }
+
+    public Vector<Article> getListeArticlePerime() {
+        Vector<Article> perimer = new Vector<Article>();
+
+        for (int i = 0; i < listeArticle.size(); i++) {
+            Article a = listeArticle.get(i);
+            if (a.estPerimer()) {
+                perimer.add(a);
+            }
+        }
+        return perimer;
+    }
+
+    public Vector<Article> getArticlesEnRupture(int seuil) {
+        Vector<Article> stockFaible = new Vector<Article>();
+
+        for (int i = 0; i < listeArticle.size(); i++) {
+            Article a = listeArticle.get(i);
+
+            if (a.estEnRupture(seuil)) {
+                stockFaible.add(a);
+            }
+        }
+        return stockFaible;
     }
 
     public void affichageMagasin() {

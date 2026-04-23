@@ -1,3 +1,5 @@
+package Magasin.Model;
+
 import java.time.LocalDate;
 import java.io.*;
 import java.util.*;
@@ -21,6 +23,16 @@ public class Nourriture extends Article {
 
     public LocalDate getDateExpiration() {
         return this.dateExpiration;
+    }
+
+    @Override
+    public boolean estPerimer() {
+        return this.dateExpiration.isBefore(LocalDate.now());
+    }
+
+    @Override
+    public boolean perimerBientot(int nbJour) {
+        return this.dateExpiration.isBefore(LocalDate.now().plusDays(nbJour)) && !estPerimer();
     }
 
     @Override

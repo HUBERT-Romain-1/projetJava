@@ -1,4 +1,7 @@
+package Magasin.Model;
+
 import java.io.*;
+import java.time.LocalDate;
 import java.util.*;
 
 public class Article {
@@ -40,13 +43,16 @@ public class Article {
         if (newPrix > 0) {
             this.prix = newPrix;
         } else {
-
-            System.out.println("prix négatif");
+            this.prix = -1;
         }
     }
 
     public void setStock(int newStock) {
-        this.stock = newStock;
+        if (newStock > 0) {
+            this.stock = newStock;
+        } else {
+            this.stock = -1;
+        }
     }
 
     public void setSport(String newSport) {
@@ -92,12 +98,20 @@ public class Article {
     }
 
     public double calculerArgentRapporter() {
-        double totalArgent = 0;
-        for (int i = 0; i < this.listeLigneVente.size(); i++) {
-            LigneVente lv = this.listeLigneVente.get(i);
-            totalArgent += lv.getQuantite() * this.prix;
-        }
-        return totalArgent;
+        return calculerQuantiteVendue() * this.prix;
+    }
+
+    // Un produit normal ne périme jamais
+    public boolean estPerimer() {
+        return false;
+    }
+
+    public boolean perimerBientot(int nbJour) {
+        return false;
+    }
+
+    public boolean estEnRupture(int seuil) {
+        return this.stock <= seuil;
     }
 
     public String toString() {
