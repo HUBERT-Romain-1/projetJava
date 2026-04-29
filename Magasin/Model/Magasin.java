@@ -65,6 +65,18 @@ public class Magasin {
         return this.listeArticle;
     }
 
+    public Client rechercherClient(String critere) {
+        for (int i = 0; i < listeArticle.size(); i++) {
+            Client c = listeClient.get(i);
+            if (c.getNomClient().equalsIgnoreCase(critere) ||
+                    c.getPrenomClient().equalsIgnoreCase(critere) ||
+                    c.getEmail().equalsIgnoreCase(critere)) {
+                return c; // Trouvé
+            }
+        }
+        return null;
+    }
+
     public Article articleMoinsVendu() {
 
         if (listeArticle.isEmpty()) {
