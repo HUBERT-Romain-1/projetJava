@@ -9,23 +9,23 @@ public class Main {
                 Magasin monMagasin = new Magasin("RoCoorp", "1 rue des JO");
                 VuePrincipale vuePrincipaleMagasin = new VuePrincipale(monMagasin);
 
-                VueConsulterRayon consulter = new VueConsulterRayon(monMagasin);
-                consulter.show();
-                consulter.pack();
+                // VueConsulterRayon consulter = new VueConsulterRayon(monMagasin);
+                // consulter.show();
+                // consulter.pack();
 
-                VueConsulterClient consulterC = new VueConsulterClient(monMagasin);
-                consulterC.show();
-                consulterC.pack();
-                VueConsulterFournisseur consulterF = new VueConsulterFournisseur(monMagasin);
-                consulterF.show();
-                consulterF.pack();
-                VueConsulterVendeur consulterVD = new VueConsulterVendeur(monMagasin);
-                consulterVD.show();
-                consulterVD.pack();
+                // VueConsulterClient consulterC = new VueConsulterClient(monMagasin);
+                // consulterC.show();
+                // consulterC.pack();
+                // VueConsulterFournisseur consulterF = new VueConsulterFournisseur(monMagasin);
+                // consulterF.show();
+                // consulterF.pack();
+                // VueConsulterVendeur consulterVD = new VueConsulterVendeur(monMagasin);
+                // consulterVD.show();
+                // consulterVD.pack();
 
-                VueConsulterVente consulterVT = new VueConsulterVente(monMagasin);
-                consulterVT.show();
-                consulterVT.pack();
+                // VueConsulterVente consulterVT = new VueConsulterVente(monMagasin);
+                // consulterVT.show();
+                // consulterVT.pack();
 
                 Client johnn = new Client("John", "Johnn", "johnn.john@gmail.com",
                                 monMagasin);
@@ -45,9 +45,9 @@ public class Main {
                 // vueAjoutVendeur.show();
                 // vueAjoutVendeur.pack();
 
-                // VueAjoutVente vueAjouteVente = new VueAjoutVente(monMagasin);
-                // vueAjouteVente.show();
-                // vueAjouteVente.pack();
+                VueAjoutVente vueAjouteVente = new VueAjoutVente(monMagasin);
+                vueAjouteVente.show();
+                vueAjouteVente.pack();
 
                 // VueAjoutFournisseur vueAjoutFournisseur = new
                 // VueAjoutFournisseur(monMagasin);
@@ -58,9 +58,9 @@ public class Main {
                 // rayon.show();
                 // rayon.pack();
 
-                // VueAjoutArticle article = new VueAjoutArticle(monMagasin);
-                // article.show();
-                // article.pack();
+                VueAjoutArticle article = new VueAjoutArticle(monMagasin);
+                article.show();
+                article.pack();
 
                 // Rayon football = new Rayon("football", monMagasin, 50);
                 // Rayon tennis = new Rayon("tennis", monMagasin, 100);
