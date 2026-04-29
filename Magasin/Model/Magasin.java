@@ -53,6 +53,18 @@ public class Magasin {
         return this.adresse;
     }
 
+    public Vector<Client> getListeClient() {
+        return this.listeClient;
+    }
+
+    public Vector<Vendeur> getListeVendeur() {
+        return this.listeVendeur;
+    }
+
+    public Vector<Article> getListeArticle() {
+        return this.listeArticle;
+    }
+
     public Article articleMoinsVendu() {
 
         if (listeArticle.isEmpty()) {

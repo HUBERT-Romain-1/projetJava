@@ -4,10 +4,10 @@ import java.io.*;
 import java.util.*;
 
 public class Rayon {
-    public Rayon(String rayon, Magasin m, int capa) {
+    public Rayon(String rayon, int capa, Magasin m) {
         this.nomRayon = rayon;
-        this.magasin = m;
         this.capacite = capa;
+        this.magasin = m;
 
         m.addRayon(this);
     }
