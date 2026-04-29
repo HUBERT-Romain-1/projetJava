@@ -9,14 +9,28 @@ public class Main {
                 Magasin monMagasin = new Magasin("RoCoorp", "1 rue des JO");
                 VuePrincipale vuePrincipaleMagasin = new VuePrincipale(monMagasin);
 
-                VueConsulterVendeur consulterClient = new VueConsulterVendeur(monMagasin);
-                consulterClient.show();
-                consulterClient.pack();
+                VueConsulterRayon consulter = new VueConsulterRayon(monMagasin);
+                consulter.show();
+                consulter.pack();
 
-                // Client johnn = new Client("John", "Johnn", "johnn.john@gmail.com",
-                // monMagasin);
-                // Client dimitri = new Client("Le prince", "Dimitri",
-                // "leprice.dimitri@gmail.com", monMagasin);
+                VueConsulterClient consulterC = new VueConsulterClient(monMagasin);
+                consulterC.show();
+                consulterC.pack();
+                VueConsulterFournisseur consulterF = new VueConsulterFournisseur(monMagasin);
+                consulterF.show();
+                consulterF.pack();
+                VueConsulterVendeur consulterVD = new VueConsulterVendeur(monMagasin);
+                consulterVD.show();
+                consulterVD.pack();
+
+                VueConsulterVente consulterVT = new VueConsulterVente(monMagasin);
+                consulterVT.show();
+                consulterVT.pack();
+
+                Client johnn = new Client("John", "Johnn", "johnn.john@gmail.com",
+                                monMagasin);
+                Client dimitri = new Client("Le prince", "Dimitri",
+                                "leprice.dimitri@gmail.com", monMagasin);
 
                 // vuePrincipaleMagasin.show();
                 // vuePrincipaleMagasin.pack();
@@ -31,9 +45,9 @@ public class Main {
                 // vueAjoutVendeur.show();
                 // vueAjoutVendeur.pack();
 
-                VueAjoutVente vueAjouteVente = new VueAjoutVente(monMagasin);
-                vueAjouteVente.show();
-                vueAjouteVente.pack();
+                // VueAjoutVente vueAjouteVente = new VueAjoutVente(monMagasin);
+                // vueAjouteVente.show();
+                // vueAjouteVente.pack();
 
                 // VueAjoutFournisseur vueAjoutFournisseur = new
                 // VueAjoutFournisseur(monMagasin);

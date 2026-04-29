@@ -18,7 +18,7 @@ public class VueConsulterVendeur extends JFrame {
     JButton btnAnnuler = new JButton("Annuler");
     JButton btnChercher = new JButton("Chercher");
     JButton btnModifier = new JButton("Enregistrer les Modifications");
-    JButton btnVoirListeClient = new JButton("Voir Listes Clients");
+    JButton btnVoirListeClient = new JButton("Voir Listes Vendeur");
 
     private Magasin magasin;
 

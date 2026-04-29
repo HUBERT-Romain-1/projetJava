@@ -77,6 +77,18 @@ public class Magasin {
         return null;
     }
 
+    public String[] getNomPrenomClientTab() {
+        String[] tab = new String[listeClient.size()];
+
+        for (int i = 0; i < listeClient.size(); i++) {
+            Client c = listeClient.get(i);
+            // Nom + Prénom
+            tab[i] = c.getNomClient() + " " + c.getPrenomClient();
+        }
+
+        return tab;
+    }
+
     public Article articleMoinsVendu() {
 
         if (listeArticle.isEmpty()) {

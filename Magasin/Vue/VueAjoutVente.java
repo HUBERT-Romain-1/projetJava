@@ -8,7 +8,7 @@ public class VueAjoutVente extends JFrame {
 
     private Magasin magasin;
 
-    private JComboBox<Client> comboClients;
+    private JComboBox<String> comboClients;
     private JComboBox<Vendeur> comboVendeurs;
 
     // Date
@@ -30,11 +30,11 @@ public class VueAjoutVente extends JFrame {
         formulaire.setBorder(BorderFactory.createEmptyBorder(20, 30, 20, 30));
 
         formulaire.add(new JLabel("Choisir le Client :"));
-        comboClients = new JComboBox<>(magasin.getListeClient());
+        comboClients = new JComboBox<>(magasin.getNomPrenomClientTab());
         formulaire.add(comboClients);
 
         formulaire.add(new JLabel("Choisir le Vendeur :"));
-        comboVendeurs = new JComboBox<>(magasin.getListeVendeur());
+        comboVendeurs = new JComboBox<>(magasin.getListeVendeur()); // Méthode getNomPrenomVendeurTab()
         formulaire.add(comboVendeurs);
 
         formulaire.add(new JLabel("Date de vente (JJ/MM/AAAA) :"));
