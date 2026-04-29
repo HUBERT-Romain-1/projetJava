@@ -9,39 +9,44 @@ public class Main {
                 Magasin monMagasin = new Magasin("RoCoorp", "1 rue des JO");
                 VuePrincipale vuePrincipaleMagasin = new VuePrincipale(monMagasin);
 
-                Client johnn = new Client("John", "Johnn", "johnn.john@gmail.com",
-                                monMagasin);
-                Client dimitri = new Client("Le prince", "Dimitri",
-                                "leprice.dimitri@gmail.com", monMagasin);
+                VueConsulterVendeur consulterClient = new VueConsulterVendeur(monMagasin);
+                consulterClient.show();
+                consulterClient.pack();
 
-                vuePrincipaleMagasin.show();
-                vuePrincipaleMagasin.pack();
+                // Client johnn = new Client("John", "Johnn", "johnn.john@gmail.com",
+                // monMagasin);
+                // Client dimitri = new Client("Le prince", "Dimitri",
+                // "leprice.dimitri@gmail.com", monMagasin);
 
-                VueAjoutClient vueAjoutClient = new VueAjoutClient(monMagasin);
+                // vuePrincipaleMagasin.show();
+                // vuePrincipaleMagasin.pack();
 
-                vueAjoutClient.show();
-                vueAjoutClient.pack();
+                // VueAjoutClient vueAjoutClient = new VueAjoutClient(monMagasin);
 
-                VueAjoutVendeur vueAjoutVendeur = new VueAjoutVendeur(monMagasin);
+                // vueAjoutClient.show();
+                // vueAjoutClient.pack();
 
-                vueAjoutVendeur.show();
-                vueAjoutVendeur.pack();
+                // VueAjoutVendeur vueAjoutVendeur = new VueAjoutVendeur(monMagasin);
+
+                // vueAjoutVendeur.show();
+                // vueAjoutVendeur.pack();
 
                 VueAjoutVente vueAjouteVente = new VueAjoutVente(monMagasin);
                 vueAjouteVente.show();
                 vueAjouteVente.pack();
 
-                VueAjoutFournisseur vueAjoutFournisseur = new VueAjoutFournisseur(monMagasin);
-                vueAjoutFournisseur.show();
-                vueAjoutFournisseur.pack();
+                // VueAjoutFournisseur vueAjoutFournisseur = new
+                // VueAjoutFournisseur(monMagasin);
+                // vueAjoutFournisseur.show();
+                // vueAjoutFournisseur.pack();
 
-                VueAjoutRayon rayon = new VueAjoutRayon(monMagasin);
-                rayon.show();
-                rayon.pack();
+                // VueAjoutRayon rayon = new VueAjoutRayon(monMagasin);
+                // rayon.show();
+                // rayon.pack();
 
-                VueAjoutArticle article = new VueAjoutArticle(monMagasin);
-                article.show();
-                article.pack();
+                // VueAjoutArticle article = new VueAjoutArticle(monMagasin);
+                // article.show();
+                // article.pack();
 
                 // Rayon football = new Rayon("football", monMagasin, 50);
                 // Rayon tennis = new Rayon("tennis", monMagasin, 100);
