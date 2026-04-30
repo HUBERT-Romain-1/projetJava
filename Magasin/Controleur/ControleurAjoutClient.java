@@ -1,8 +1,6 @@
 package Magasin.Controleur;
 
 import Magasin.Model.*;
-import Magasin.Vue.*;
-
 import javax.swing.*;
 import java.awt.event.*;
 
@@ -48,11 +46,9 @@ public class ControleurAjoutClient implements ActionListener {
         );
 
         if (choix == JOptionPane.YES_OPTION) {
-            Client c = new Client(nom, prenom, email, magasin);
+            new Client(nom, prenom, email, magasin);
 
             JOptionPane.showMessageDialog(fenetre, "Client enregistré avec succès !");
-            System.out.println("Client ajouté ! Total : " + magasin.getListeClient().size());
-
             // On ferme
             fenetre.dispose();
         }
