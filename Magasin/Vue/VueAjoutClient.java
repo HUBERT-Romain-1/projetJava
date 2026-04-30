@@ -1,5 +1,7 @@
 package Magasin.Vue;
 
+import Magasin.Controleur.ControleurBoutonAnnuler;
+import Magasin.Controleur.ControleurPagePrincipale;
 import Magasin.Model.*;
 import javax.swing.*;
 import java.awt.*;
@@ -48,6 +50,8 @@ public class VueAjoutClient extends JFrame {
         getContentPane().add(formulaire, BorderLayout.CENTER);
         getContentPane().add(boutons, BorderLayout.SOUTH);
 
+        ControleurBoutonAnnuler cont = new ControleurBoutonAnnuler(this);
+        btnAnnuler.addActionListener(cont);
     }
 
 }

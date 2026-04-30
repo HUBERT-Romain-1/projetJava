@@ -1,5 +1,6 @@
 package Magasin.Vue;
 
+import Magasin.Controleur.ControleurPagePrincipale;
 import Magasin.Model.*;
 import javax.swing.*;
 import java.awt.*;
@@ -74,7 +75,25 @@ public class VuePrincipale extends JFrame {
         this.add(centreLayout, BorderLayout.CENTER);
         this.add(sudPanel, BorderLayout.SOUTH);
 
-        this.setSize(1200, 900);
+        this.setPreferredSize(new Dimension(1100, 800));
+
+        ControleurPagePrincipale cont = new ControleurPagePrincipale(m);
+        ajouteClient.addActionListener(cont);
+        ajouteVendeur.addActionListener(cont);
+        ajouteVente.addActionListener(cont);
+        ajouteArticle.addActionListener(cont);
+        ajouteFournisseur.addActionListener(cont);
+        ajouteRayon.addActionListener(cont);
+
+        consulterClient.addActionListener(cont);
+        consulterVendeur.addActionListener(cont);
+        consulterVente.addActionListener(cont);
+        consulterArticle.addActionListener(cont);
+        consulterFournisseur.addActionListener(cont);
+        consulterRayon.addActionListener(cont);
+
+        statistique.addActionListener(cont);
+
     }
 
     private void configurerBouton(JButton b, Dimension d, JPanel p) {
