@@ -1,5 +1,6 @@
 package Magasin.Vue;
 
+import Magasin.Controleur.ControleurAjoutClient;
 import Magasin.Controleur.ControleurBoutonAnnuler;
 import Magasin.Controleur.ControleurPagePrincipale;
 import Magasin.Model.*;
@@ -18,7 +19,7 @@ public class VueAjoutClient extends JFrame {
     JButton btnAjout = new JButton("Enregistrer le Client");
     JButton btnAnnuler = new JButton("Annuler");
 
-    private Magasin magasin;
+    Magasin magasin;
 
     public VueAjoutClient(Magasin m) {
         this.magasin = m;
@@ -52,6 +53,10 @@ public class VueAjoutClient extends JFrame {
 
         ControleurBoutonAnnuler cont = new ControleurBoutonAnnuler(this);
         btnAnnuler.addActionListener(cont);
+
+        ControleurAjoutClient contAjout = new ControleurAjoutClient(m,
+                zoneNom, zonePrenom, zoneEmail, this);
+        btnAjout.addActionListener(contAjout);
     }
 
 }
