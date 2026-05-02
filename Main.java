@@ -30,14 +30,6 @@ public class Main {
                 Vendeur vendeur2 = new Vendeur("Dupond", "Patrick", "0123654456",
                                 monMagasin);
 
-                // Materiel velo = new Materiel("Velo VTT", 250, 10, "Cyclisme", monMagasin, 10,
-                // 150, 100);
-                // Materiel tablePing = new Materiel("Table de ping-pong", 300, 12, "Ping-Pong",
-                // monMagasin, 25, 100, 100);
-                // Nourriture barreDeChocolat = new Nourriture("Barre de chocolat", 10, 10,
-                // "fitness", monMagasin,
-                // "chocolat", LocalDate.parse("2026-05-01"));
-
                 // Vente vente1 = new Vente(null, dimitri, vendeur2, monMagasin);
                 // vente1.ajouterProduit(ballonFootball, 2);
                 // vente1.ajouterProduit(velo, 1);

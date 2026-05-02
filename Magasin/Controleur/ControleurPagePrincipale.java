@@ -2,6 +2,17 @@ package Magasin.Controleur;
 
 import Magasin.Model.*;
 import Magasin.Vue.*;
+import Magasin.Vue.VueAjout.VueAjoutArticle;
+import Magasin.Vue.VueAjout.VueAjoutClient;
+import Magasin.Vue.VueAjout.VueAjoutFournisseur;
+import Magasin.Vue.VueAjout.VueAjoutRayon;
+import Magasin.Vue.VueAjout.VueAjoutVendeur;
+import Magasin.Vue.VueAjout.VueAjoutVente;
+import Magasin.Vue.VueConsulter.VueConsulterArticle;
+import Magasin.Vue.VueConsulter.VueConsulterClient;
+import Magasin.Vue.VueConsulter.VueConsulterRayon;
+import Magasin.Vue.VueConsulter.VueConsulterVendeur;
+import Magasin.Vue.VueConsulter.VueConsulterVente;
 
 import javax.swing.*;
 import java.awt.event.*;

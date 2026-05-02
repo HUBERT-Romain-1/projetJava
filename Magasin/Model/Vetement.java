@@ -9,6 +9,8 @@ public class Vetement extends Article {
             Magasin magasin, String taille, String couleur) {
 
         super(nom, prix, stock, sport, rayon, magasin);
+        this.tailleVetement = taille;
+        this.couleurVetement = couleur;
 
     }
 

@@ -69,6 +69,21 @@ public class Magasin {
         return this.listeRayon;
     }
 
+    public Rayon trouverRayon(String nomRayon) {
+        for (int i = 0; i < listeRayon.size(); i++) {
+            Rayon r = listeRayon.get(i);
+            if (r.getNomRayon().equalsIgnoreCase(nomRayon)) {
+                return r;
+            }
+        }
+        return null;
+    }
+
+    public boolean peutAjouterDansRayon(String typeArticle) {
+        Rayon r = trouverRayon(typeArticle);
+        return (r != null && !r.estPlein());
+    }
+
     public Client rechercherClient(String critere) {
         for (int i = 0; i < listeClient.size(); i++) {
             Client c = listeClient.get(i);
@@ -109,28 +124,6 @@ public class Magasin {
             }
         }
         return null;
-    }
-
-    public String[] getNomPrenomClientTab() {
-        String[] tab = new String[listeClient.size()];
-
-        for (int i = 0; i < tab.length; i++) {
-            Client c = listeClient.get(i);
-            tab[i] = c.getIdClient() + " - " + c.getNomClient() + " " + c.getPrenomClient();
-        }
-
-        return tab;
-    }
-
-    public String[] getNomPrenomVendeurTab() {
-        String[] tab = new String[listeVendeur.size()];
-
-        for (int i = 0; i < tab.length; i++) {
-            Vendeur v = listeVendeur.get(i);
-            tab[i] = v.getIdVendeur() + " - " + v.getNomVendeur() + " " + v.getPrenomVendeur();
-        }
-
-        return tab;
     }
 
     public String[] getNomArticleTab() {
