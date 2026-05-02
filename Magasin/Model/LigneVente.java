@@ -5,7 +5,7 @@ import java.util.*;
 
 public class LigneVente {
 
-    public LigneVente(int quant, Vente v, Article a) {
+    public LigneVente(int quant, Article a, Vente v) {
         this.quantite = quant;
         this.vente = v;
         this.article = a;
@@ -17,6 +17,10 @@ public class LigneVente {
 
     public int getQuantite() {
         return this.quantite;
+    }
+
+    public double CalculTotalLigne() {
+        return this.article.getPrix() * this.getQuantite();
     }
 
     public Article getArticle() {

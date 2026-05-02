@@ -21,7 +21,7 @@ public class VueAjoutRayon extends JFrame {
         this.magasin = m;
 
         this.setTitle("Ajout Rayon - " + magasin.getNomMagasin());
-        this.setPreferredSize(new Dimension(800, 250));
+        this.setPreferredSize(new Dimension(800, 225));
 
         JPanel formulaire = new JPanel(new GridLayout(2, 2, 20, 20));
         formulaire.setBorder(BorderFactory.createEmptyBorder(30, 30, 20, 30));

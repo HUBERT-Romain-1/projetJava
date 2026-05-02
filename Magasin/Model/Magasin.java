@@ -66,7 +66,7 @@ public class Magasin {
     }
 
     public Client rechercherClient(String critere) {
-        for (int i = 0; i < listeArticle.size(); i++) {
+        for (int i = 0; i < listeClient.size(); i++) {
             Client c = listeClient.get(i);
             if (c.getNomClient().equalsIgnoreCase(critere) ||
                     c.getPrenomClient().equalsIgnoreCase(critere) ||
@@ -77,15 +77,65 @@ public class Magasin {
         return null;
     }
 
+    public Client rechercherClientID(int id) {
+        for (int i = 0; i < listeClient.size(); i++) {
+            Client c = listeClient.get(i);
+            if (c.getIdClient() == id) {
+                return c; // Trouvé
+            }
+        }
+        return null;
+    }
+
+    public Article rechercherArticleID(int id) {
+        for (int i = 0; i < listeArticle.size(); i++) {
+            Article a = listeArticle.get(i);
+            if (a.getIdArticle() == id) {
+                return a; // Trouvé
+            }
+        }
+        return null;
+    }
+
+    public Vendeur rechercherVendeurID(int id) {
+        for (int i = 0; i < listeVendeur.size(); i++) {
+            Vendeur v = listeVendeur.get(i);
+            if (v.getIdVendeur() == id) {
+                return v; // Trouvé
+            }
+        }
+        return null;
+    }
+
     public String[] getNomPrenomClientTab() {
         String[] tab = new String[listeClient.size()];
 
-        for (int i = 0; i < listeClient.size(); i++) {
+        for (int i = 0; i < tab.length; i++) {
             Client c = listeClient.get(i);
-            // Nom + Prénom
-            tab[i] = c.getNomClient() + " " + c.getPrenomClient();
+            tab[i] = c.getIdClient() + " - " + c.getNomClient() + " " + c.getPrenomClient();
         }
 
+        return tab;
+    }
+
+    public String[] getNomPrenomVendeurTab() {
+        String[] tab = new String[listeVendeur.size()];
+
+        for (int i = 0; i < tab.length; i++) {
+            Vendeur v = listeVendeur.get(i);
+            tab[i] = v.getIdVendeur() + " - " + v.getNomVendeur() + " " + v.getPrenomVendeur();
+        }
+
+        return tab;
+    }
+
+    public String[] getNomArticleTab() {
+        String[] tab = new String[listeArticle.size()];
+
+        for (int i = 0; i < tab.length; i++) {
+            Article a = listeArticle.get(i);
+            tab[i] = a.getIdArticle() + " - " + a.getNomProduit();
+        }
         return tab;
     }
 
@@ -185,52 +235,4 @@ public class Magasin {
         return stockFaible;
     }
 
-    public void affichageMagasin() {
-        System.out.println("---------- MAGASIN : " + this.nomMagasin.toUpperCase() + " ----------");
-        System.out.println("Adresse : " + this.getAdresse());
-        System.out.println("ID Magasin : " + this.idMagasin);
-
-        System.out.println("\n --- LISTE DES FOURNISSEUR ---\n");
-
-        for (int i = 0; i < listeFournisseur.size(); i++) {
-            Fournisseur f = listeFournisseur.get(i);
-            System.out.println(f.toString());
-
-        }
-
-        System.out.println("\n --- LISTE DES RAYON ---\n");
-
-        for (int i = 0; i < listeRayon.size(); i++) {
-            Rayon r = listeRayon.get(i);
-            System.out.println(r.toString());
-        }
-
-        System.out.println("\n --- LISTE DES CLIENTS ---\n");
-
-        for (int i = 0; i < listeClient.size(); i++) {
-            Client c = listeClient.get(i);
-            System.out.println(c.toString());
-        }
-
-        System.out.println("\n --- LISTE DES ARTICLES ---\n");
-
-        for (int i = 0; i < listeArticle.size(); i++) {
-            Article a = listeArticle.get(i);
-            System.out.println(a.toString());
-        }
-
-        System.out.println("\n --- LISTE DES VENTES ---\n");
-
-        for (int i = 0; i < listeVente.size(); i++) {
-            Vente vente = listeVente.get(i);
-            System.out.println(vente.toString());
-        }
-
-        System.out.println("\n --- LISTE DES VENDEUR ---\n");
-
-        for (int i = 0; i < listeVendeur.size(); i++) {
-            Vendeur v = listeVendeur.get(i);
-            System.out.println(v.toString());
-        }
-    }
 }

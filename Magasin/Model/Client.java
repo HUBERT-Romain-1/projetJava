@@ -15,7 +15,7 @@ public class Client {
         this.idClient = compteurID++;
     }
 
-    private static int compteurID = 0;
+    private static int compteurID = 100;
     private int idClient;
     private String nomClient;
     private String prenomClient;
@@ -63,12 +63,18 @@ public class Client {
         return this.listeVente;
     }
 
+    public double calculDepense() {
+        double totaldepense = 0;
+        for (int i = 0; i < listeVente.size(); i++) {
+            Vente v = this.listeVente.get(i);
+            totaldepense += v.getSommeTotal();
+
+        }
+
+        return totaldepense;
+    }
+
     public String toString() {
-        return "Id Client : " + this.getIdClient()
-                + " | Nom : " + this.getNomClient()
-                + " | Prenom : " + this.getPrenomClient()
-                + " | Email : " + this.getEmail()
-                + " | Magasin : " + this.getNomMagasin()
-                + " | Liste des achats";
+        return this.getIdClient() + " - " + this.getNomClient().toUpperCase() + " " + this.getPrenomClient();
     }
 }

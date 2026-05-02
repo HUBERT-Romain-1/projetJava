@@ -71,12 +71,7 @@ public class Vendeur {
     }
 
     public String toString() {
-        return "matricule : " + this.idVendeur
-                + " | nom vendeur : " + this.nomVendeur
-                + " | prenom vendeur : " + this.prenomVendeur
-                + " | numéro de Telephone : " + this.telephone
-                + " | magasin : " + getNomMagasin()
-                + " | Chiffre d'Affaire : " + this.calculCA();
+        return this.getIdVendeur() + " - " + this.getNomVendeur().toUpperCase() + " " + this.getPrenomVendeur();
     }
 
 }

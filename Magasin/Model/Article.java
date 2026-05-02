@@ -5,18 +5,20 @@ import java.time.LocalDate;
 import java.util.*;
 
 public class Article {
-    public Article(String nom, double prix, int stock, String sport, Magasin m) {
+    public Article(String nom, double prix, int stock, String sport, Rayon rayon, Magasin m) {
         this.nomProduit = nom;
         this.prix = prix;
         this.stock = stock;
         this.sport = sport;
         this.magasin = m;
 
+        this.listeRayon.add(rayon);
+        rayon.addArticle(this);
         m.addArticle(this);
         refProduit = compteurID++;
     }
 
-    private static int compteurID = 0;
+    private static int compteurID = 200;
 
     private int refProduit;
     private String nomProduit;
@@ -115,9 +117,6 @@ public class Article {
     }
 
     public String toString() {
-        return "Article : " + this.nomProduit
-                + " (Réf : " + this.refProduit + ") | Sport : " + this.sport
-                + " | Prix : " + this.prix + " euros | Stock : "
-                + this.stock;
+        return this.getIdArticle() + " - " + this.getNomProduit();
     };
 }

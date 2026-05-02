@@ -52,7 +52,7 @@ public class VueAjoutArticle extends JFrame {
         this.magasin = m;
 
         setTitle("Ajout d'un nouvel Article - " + m.getNomMagasin());
-        setPreferredSize(new Dimension(800, 400));
+        setPreferredSize(new Dimension(800, 350));
 
         JPanel page1 = new JPanel();
         page1.setLayout(new BorderLayout());

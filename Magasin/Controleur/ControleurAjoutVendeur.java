@@ -4,20 +4,20 @@ import Magasin.Model.*;
 import javax.swing.*;
 import java.awt.event.*;
 
-public class ControleurAjoutClient implements ActionListener {
+public class ControleurAjoutVendeur implements ActionListener {
 
     Magasin magasin;
     JTextField txtNom;
     JTextField txtPrenom;
-    JTextField txtEmail;
+    JTextField txtTel;
     JFrame fenetre; // pour pouvoir fermer
 
-    public ControleurAjoutClient(Magasin m, JTextField nom,
-            JTextField prenom, JTextField email, JFrame fe) {
+    public ControleurAjoutVendeur(Magasin m, JTextField nom,
+            JTextField prenom, JTextField tel, JFrame fe) {
         this.magasin = m;
         this.txtNom = nom;
         this.txtPrenom = prenom;
-        this.txtEmail = email;
+        this.txtTel = tel;
         this.fenetre = fe;
     }
 
@@ -25,10 +25,10 @@ public class ControleurAjoutClient implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         String nom = txtNom.getText();
         String prenom = txtPrenom.getText();
-        String email = txtEmail.getText();
+        String tel = txtTel.getText();
 
         // ALERTE : Logo Alerte
-        if (nom.isEmpty() || prenom.isEmpty() || email.isEmpty()) {
+        if (nom.isEmpty() || prenom.isEmpty() || tel.isEmpty()) {
             JOptionPane.showMessageDialog(fenetre,
                     "Erreur : remplir tous les champs !",
                     "Attention",
@@ -39,17 +39,16 @@ public class ControleurAjoutClient implements ActionListener {
         // Confirmation
         int choix = JOptionPane.showConfirmDialog(
                 fenetre,
-                "Voulez-vous vraiment enregistrer " + prenom + " " + nom + " " + email + "?",
+                "Voulez-vous vraiment enregistrer " + prenom + " " + nom + " " + tel + "?",
                 "Confirmation de validation",
                 JOptionPane.YES_NO_OPTION,
                 JOptionPane.WARNING_MESSAGE // logo danger
         );
 
         if (choix == JOptionPane.YES_OPTION) {
-            new Client(nom, prenom, email, magasin);
+            new Vendeur(nom, prenom, tel, magasin);
 
-            JOptionPane.showMessageDialog(fenetre, "Client enregistré avec succès !");
-
+            JOptionPane.showMessageDialog(fenetre, "Vendeur enregistré avec succès !");
             // On ferme
             fenetre.dispose();
         }

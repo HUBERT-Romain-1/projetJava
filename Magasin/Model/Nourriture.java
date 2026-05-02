@@ -6,9 +6,9 @@ import java.util.*;
 
 public class Nourriture extends Article {
 
-    public Nourriture(String nom, double prix, int stock, String sport,
+    public Nourriture(String nom, double prix, int stock, String sport, Rayon rayon,
             Magasin m, String saveur, LocalDate date) {
-        super(nom, prix, stock, sport, m);
+        super(nom, prix, stock, sport, rayon, m);
         this.saveur = saveur;
         this.dateExpiration = date;
 
@@ -33,12 +33,6 @@ public class Nourriture extends Article {
     @Override
     public boolean perimerBientot(int nbJour) {
         return this.dateExpiration.isBefore(LocalDate.now().plusDays(nbJour)) && !estPerimer();
-    }
-
-    @Override
-    public String toString() {
-        return super.toString()
-                + " | saveur : " + this.getSaveur() + " | date d'expiration : " + this.getDateExpiration();
     }
 
 }

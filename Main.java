@@ -17,18 +17,18 @@ public class Main {
                 vuePrincipaleMagasin.show();
                 vuePrincipaleMagasin.pack();
 
-                // Rayon football = new Rayon("football", monMagasin, 50);
-                // Rayon tennis = new Rayon("tennis", monMagasin, 100);
-                // Rayon natation = new Rayon("natation", monMagasin, 75);
+                Rayon football = new Rayon("football", 100, monMagasin);
+                Rayon tennis = new Rayon("tennis", 150, monMagasin);
+                Rayon natation = new Rayon("natation", 20, monMagasin);
 
-                // Article ballonFootball = new Article("Ballon de foot", 10, 10, "Football",
-                // monMagasin);
-                // Article maillotFoot = new Article("Maillot de foot", 90, 10, "Football",
-                // monMagasin);
+                Article ballonFootball = new Article("Ballon de foot", 10, 10, "Football", football,
+                                monMagasin);
+                Article maillotFoot = new Article("Maillot de foot", 90, 10, "Football", football,
+                                monMagasin);
 
-                // Vendeur vendeur1 = new Vendeur("A", "Bea", "98049409", monMagasin);
-                // Vendeur vendeur2 = new Vendeur("Dupond", "Patrick", "0123654456",
-                // monMagasin);
+                Vendeur vendeur1 = new Vendeur("A", "Bea", "98049409", monMagasin);
+                Vendeur vendeur2 = new Vendeur("Dupond", "Patrick", "0123654456",
+                                monMagasin);
 
                 // Materiel velo = new Materiel("Velo VTT", 250, 10, "Cyclisme", monMagasin, 10,
                 // 150, 100);

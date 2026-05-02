@@ -10,18 +10,29 @@ public class Rayon {
         this.magasin = m;
 
         m.addRayon(this);
+
+        this.refRayon = compteurID;
     }
 
+    private static int compteurID = 1000;
+
+    private int refRayon;
     private String nomRayon;
     private int capacite;
     private Vector<Article> listeArticle = new Vector<Article>();
-    public Magasin magasin;
+    private Magasin magasin;
 
-    public void addArticle(Article article) {
-        listeArticle.add(article);
+    public boolean estPlein() {
+        return listeArticle.size() >= capacite;
     }
 
-    public String getRayon() {
+    public void addArticle(Article a) {
+        if (!estPlein()) {
+            listeArticle.add(a);
+        }
+    }
+
+    public String getNomRayon() {
         return this.nomRayon;
     }
 
@@ -41,8 +52,11 @@ public class Rayon {
         return this.magasin.getNomMagasin();
     }
 
+    public int getIdRayon() {
+        return this.refRayon;
+    }
+
     public String toString() {
-        return "nom du rayon : " + this.getRayon()
-                + " | capacite max : " + this.getCapacite();
+        return this.getIdRayon() + " - " + this.getNomRayon() + " " + this.getCapacite() + " maximum";
     }
 }

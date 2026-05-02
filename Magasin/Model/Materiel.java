@@ -4,9 +4,10 @@ import java.io.*;
 import java.util.*;
 
 public class Materiel extends Article {
-    public Materiel(String nom, double prix, int stock, String sport, Magasin m, double poids, double Longueur,
+    public Materiel(String nom, double prix, int stock, String sport, Magasin m, Rayon rayon,
+            double poids, double Longueur,
             double largeur) {
-        super(nom, prix, stock, sport, m);
+        super(nom, prix, stock, sport, rayon, m);
         this.poids = poids;
         this.Longueur = Longueur;
         this.largeur = largeur;
@@ -30,8 +31,7 @@ public class Materiel extends Article {
 
     @Override
     public String toString() {
-        return super.toString() + " | Poids : " + this.poids + "kg | Longueur : "
-                + this.getLongueur() + "cm | Largeur : " + this.getLargeur() + " cm";
+        return this.getIdArticle() + " - " + this.getNomProduit();
     }
 
 }

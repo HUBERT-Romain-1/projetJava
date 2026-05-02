@@ -1,5 +1,8 @@
 package Magasin.Vue;
 
+import Magasin.Controleur.ControleurAjoutClient;
+import Magasin.Controleur.ControleurAjoutVendeur;
+import Magasin.Controleur.ControleurBoutonAnnuler;
 import Magasin.Model.*;
 import javax.swing.*;
 import java.awt.*;
@@ -49,6 +52,12 @@ public class VueAjoutVendeur extends JFrame {
         getContentPane().add(formulaire, BorderLayout.CENTER);
         getContentPane().add(boutons, BorderLayout.SOUTH);
 
+        ControleurBoutonAnnuler cont = new ControleurBoutonAnnuler(this);
+        btnAnnuler.addActionListener(cont);
+
+        ControleurAjoutVendeur contAjout = new ControleurAjoutVendeur(m,
+                zoneNom, zonePrenom, zoneTel, this);
+        btnAjout.addActionListener(contAjout);
     }
 
 }

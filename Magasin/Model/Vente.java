@@ -31,7 +31,7 @@ public class Vente {
     public void addLigneVente(LigneVente lignev) {
         listeLigneVente.add(lignev);
 
-        this.SommeTotal += lignev.getArticle().getPrix() * lignev.getQuantite();
+        this.SommeTotal += lignev.CalculTotalLigne();
     }
 
     public int getIdVente() {
@@ -58,23 +58,20 @@ public class Vente {
         return this.vendeur;
     }
 
-    public void ajouterProduit(Article a, int qte) {
-
+    public LigneVente ajouterProduit(Article a, int qte) {
         if (a.getStock() >= qte) {
-            LigneVente lv = new LigneVente(qte, this, a);
-
+            LigneVente lv = new LigneVente(qte, a, this);
             this.listeLigneVente.add(lv);
-            a.addLigneVente(lv);
             a.setStock(a.getStock() - qte);
-            this.SommeTotal += a.getPrix() * qte;
-
+            this.SommeTotal += lv.CalculTotalLigne();
+            return lv;
         }
+        return null;
     }
 
     public void validerVente() {
-        // this.dateVente = new;
-        vendeur.addVente(this);
-        client.addVente(this);
+        this.vendeur.addVente(this);
+        this.client.addVente(this);
     }
 
     public String toString() {
