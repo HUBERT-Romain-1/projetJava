@@ -1,5 +1,7 @@
 package Magasin.Vue;
 
+import Magasin.Controleur.ControleurAjoutArticleSuivant;
+import Magasin.Controleur.ControleurRetourArticle;
 import Magasin.Model.*;
 import javax.swing.*;
 import java.awt.*;
@@ -112,9 +114,24 @@ public class VueAjoutArticle extends JFrame {
         conteneurPrincipale.add(page1, "P1");
         conteneurPrincipale.add(page2, "P2");
         this.getContentPane().add(conteneurPrincipale);
+
+        ControleurAjoutArticleSuivant ctrlSuivant = new ControleurAjoutArticleSuivant(
+                conteneurPrincipale,
+                panelP2,
+                comboType,
+                zoneNom,
+                zonePrix,
+                zoneStock,
+                zoneSport,
+                this);
+
+        btnSuivant.addActionListener(ctrlSuivant);
+
+        ControleurRetourArticle ctrlRetour = new ControleurRetourArticle(conteneurPrincipale);
+        btnRetour.addActionListener(ctrlRetour);
     }
 
-    private JPanel creerPanelNourriture() {
+    public JPanel creerPanelNourriture() {
         JPanel p = new JPanel(new GridLayout(2, 2, 10, 10));
         p.setBorder(BorderFactory.createTitledBorder("Détails Nourriture"));
         p.add(saveur);
@@ -124,7 +141,7 @@ public class VueAjoutArticle extends JFrame {
         return p;
     }
 
-    private JPanel creerPanelVetement() {
+    public JPanel creerPanelVetement() {
         JPanel p = new JPanel(new GridLayout(2, 2, 10, 10));
         p.setBorder(BorderFactory.createTitledBorder("Détails Vêtement"));
         p.add(taille);
@@ -134,7 +151,7 @@ public class VueAjoutArticle extends JFrame {
         return p;
     }
 
-    private JPanel creerPanelMateriel() {
+    public JPanel creerPanelMateriel() {
         JPanel p = new JPanel(new GridLayout(3, 2, 10, 10));
         p.setBorder(BorderFactory.createTitledBorder("Détails Matériel"));
         p.add(poids);
