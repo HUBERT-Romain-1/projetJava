@@ -13,11 +13,14 @@ public class VueAjoutArticle extends JFrame {
     JLabel prix = new JLabel("Prix de L'article :");
     JLabel stock = new JLabel("Quantité :");
     JLabel sport = new JLabel("Sport :");
+    JLabel rayon = new JLabel("Rayon :");
 
     JTextField zoneNom = new JTextField();
     JTextField zonePrix = new JTextField();
     JTextField zoneStock = new JTextField();
     JTextField zoneSport = new JTextField();
+
+    JComboBox<Rayon> comboRayon;
 
     JLabel typeLabel = new JLabel("Type d'article :");
     String[] types = { "Nourriture", "Vêtement", "Matériel" };
@@ -40,6 +43,10 @@ public class VueAjoutArticle extends JFrame {
     JTextField zoneLargeur = new JTextField();
     JTextField zonePoids = new JTextField();
 
+    JTextField txtJ = new JTextField(2);
+    JTextField txtM = new JTextField(2);
+    JTextField txtA = new JTextField(4);
+
     // CardLayout
     CardLayout cardLayoutP1 = new CardLayout();
     JPanel conteneurPrincipale = new JPanel(cardLayoutP1);
@@ -54,14 +61,14 @@ public class VueAjoutArticle extends JFrame {
         this.magasin = m;
 
         setTitle("Ajout d'un nouvel Article - " + m.getNomMagasin());
-        setPreferredSize(new Dimension(800, 350));
+        this.setPreferredSize(new Dimension(600, 350));
 
         JPanel page1 = new JPanel();
         page1.setLayout(new BorderLayout());
 
         // Formulaire P1
-        JPanel formulaire = new JPanel(new GridLayout(5, 2, 20, 20));
-        formulaire.setBorder(BorderFactory.createEmptyBorder(30, 30, 20, 30));
+        JPanel formulaire = new JPanel(new GridLayout(6, 2, 20, 20));
+        formulaire.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 
         formulaire.add(nom);
         formulaire.add(zoneNom);
@@ -78,9 +85,13 @@ public class VueAjoutArticle extends JFrame {
         formulaire.add(typeLabel);
         formulaire.add(comboType);
 
+        formulaire.add(rayon);
+        comboRayon = new JComboBox<>(magasin.getListeRayon());
+        formulaire.add(comboRayon);
+
         // Bouton p1
         JPanel boutons = new JPanel(new GridLayout(1, 2, 20, 20));
-        boutons.setBorder(BorderFactory.createEmptyBorder(0, 30, 20, 30));
+        boutons.setBorder(BorderFactory.createEmptyBorder(0, 20, 20, 20));
 
         btnSuivant.setPreferredSize(new Dimension(200, 40));
         btnAnnuler.setPreferredSize(new Dimension(100, 40));
@@ -123,6 +134,7 @@ public class VueAjoutArticle extends JFrame {
                 zonePrix,
                 zoneStock,
                 zoneSport,
+                comboRayon,
                 this);
 
         btnSuivant.addActionListener(ctrlSuivant);
@@ -133,17 +145,26 @@ public class VueAjoutArticle extends JFrame {
 
     public JPanel creerPanelNourriture() {
         JPanel p = new JPanel(new GridLayout(2, 2, 10, 10));
-        p.setBorder(BorderFactory.createTitledBorder("Détails Nourriture"));
+        // Panel date
+        JPanel pDate = new JPanel(new FlowLayout(FlowLayout.LEFT, 5, 0));
+        pDate.add(txtJ);
+        pDate.add(new JLabel("/"));
+        pDate.add(txtM);
+        pDate.add(new JLabel("/"));
+        pDate.add(txtA);
+
         p.add(saveur);
         p.add(zoneSaveur);
-        p.add(new JLabel("Date Exp. :"));
-        p.add(new JTextField("JJ/MM/AAAA"));
+
+        // pour la date
+        p.add(new JLabel("Date Exp. : (jj/MM/AAAA)"));
+        p.add(pDate);
         return p;
     }
 
     public JPanel creerPanelVetement() {
         JPanel p = new JPanel(new GridLayout(2, 2, 10, 10));
-        p.setBorder(BorderFactory.createTitledBorder("Détails Vêtement"));
+
         p.add(taille);
         p.add(new JComboBox<>(new String[] { "S", "M", "L", "XL" }));
         p.add(new JLabel("Couleur :"));
@@ -153,7 +174,6 @@ public class VueAjoutArticle extends JFrame {
 
     public JPanel creerPanelMateriel() {
         JPanel p = new JPanel(new GridLayout(3, 2, 10, 10));
-        p.setBorder(BorderFactory.createTitledBorder("Détails Matériel"));
         p.add(poids);
         p.add(zonePoids);
         p.add(Largeur);

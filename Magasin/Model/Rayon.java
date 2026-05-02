@@ -11,7 +11,7 @@ public class Rayon {
 
         m.addRayon(this);
 
-        this.refRayon = compteurID;
+        this.refRayon = compteurID++;
     }
 
     private static int compteurID = 1000;
@@ -57,6 +57,6 @@ public class Rayon {
     }
 
     public String toString() {
-        return this.getIdRayon() + " - " + this.getNomRayon() + " " + this.getCapacite() + " maximum";
+        return this.getIdRayon() + " - " + this.getNomRayon();
     }
 }

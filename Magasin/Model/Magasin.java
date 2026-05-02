@@ -65,6 +65,10 @@ public class Magasin {
         return this.listeArticle;
     }
 
+    public Vector<Rayon> getListeRayon() {
+        return this.listeRayon;
+    }
+
     public Client rechercherClient(String critere) {
         for (int i = 0; i < listeClient.size(); i++) {
             Client c = listeClient.get(i);

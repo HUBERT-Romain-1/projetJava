@@ -6,15 +6,15 @@ import java.awt.*;
 
 public class VueConsulterVente extends JFrame {
 
-    private Magasin magasin;
+    Magasin magasin;
 
-    private JComboBox<String> comboClients;
-    private JComboBox<Vendeur> comboVendeurs;
+    JComboBox<Client> comboClients;
+    JComboBox<Vendeur> comboVendeurs;
 
     // Date
-    private JTextField txtJ = new JTextField(2);
-    private JTextField txtM = new JTextField(2);
-    private JTextField txtA = new JTextField(4);
+    JTextField txtJ = new JTextField(2);
+    JTextField txtM = new JTextField(2);
+    JTextField txtA = new JTextField(4);
 
     JButton btnChercher = new JButton("Chercher");
     JButton btnModifier = new JButton("Enregistrer les Modifications");
@@ -32,11 +32,11 @@ public class VueConsulterVente extends JFrame {
         formulaire.setBorder(BorderFactory.createEmptyBorder(20, 30, 20, 30));
 
         formulaire.add(new JLabel("Choisir le Client :"));
-        comboClients = new JComboBox<>(magasin.getNomPrenomClientTab());
+        comboClients = new JComboBox<>(magasin.getListeClient());
         formulaire.add(comboClients);
 
         formulaire.add(new JLabel("Choisir le Vendeur :"));
-        comboVendeurs = new JComboBox<>(magasin.getListeVendeur()); // Méthode getNomPrenomVendeurTab()
+        comboVendeurs = new JComboBox<>(magasin.getListeVendeur());
         formulaire.add(comboVendeurs);
 
         formulaire.add(new JLabel("Date de vente (JJ/MM/AAAA) :"));
