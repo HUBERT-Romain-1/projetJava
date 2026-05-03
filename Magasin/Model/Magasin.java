@@ -84,16 +84,17 @@ public class Magasin {
         return (r != null && !r.estPlein());
     }
 
-    public Client rechercherClient(String critere) {
+    public Vector<Client> rechercherClient(String critere) {
+        Vector<Client> tabClient = new Vector<Client>();
         for (int i = 0; i < listeClient.size(); i++) {
             Client c = listeClient.get(i);
             if (c.getNomClient().equalsIgnoreCase(critere) ||
                     c.getPrenomClient().equalsIgnoreCase(critere) ||
                     c.getEmail().equalsIgnoreCase(critere)) {
-                return c; // Trouvé
+                tabClient.add(c);
             }
         }
-        return null;
+        return tabClient;
     }
 
     public Client rechercherClientID(int id) {

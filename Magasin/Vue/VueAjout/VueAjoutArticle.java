@@ -1,6 +1,8 @@
 package Magasin.Vue.VueAjout;
 
+import Magasin.Controleur.ControleurBoutonAnnuler;
 import Magasin.Controleur.AjoutArticle.ControleurAjoutArticleSuivant;
+import Magasin.Controleur.AjoutArticle.ControleurEnregistrerArticle;
 import Magasin.Controleur.AjoutArticle.ControleurRetourArticle;
 import Magasin.Model.*;
 import javax.swing.*;
@@ -9,52 +11,54 @@ import java.awt.*;
 public class VueAjoutArticle extends JFrame {
 
     // Formulaire P1
-    JLabel nom = new JLabel("Nom de L'article:");
-    JLabel prix = new JLabel("Prix de L'article :");
-    JLabel stock = new JLabel("Quantité :");
-    JLabel sport = new JLabel("Sport :");
-    JLabel rayon = new JLabel("Rayon :");
+    public JLabel nom = new JLabel("Nom de L'article:");
+    public JLabel prix = new JLabel("Prix de L'article :");
+    public JLabel stock = new JLabel("Quantité :");
+    public JLabel sport = new JLabel("Sport :");
+    public JLabel rayon = new JLabel("Rayon :");
 
-    JTextField zoneNom = new JTextField();
-    JTextField zonePrix = new JTextField();
-    JTextField zoneStock = new JTextField();
-    JTextField zoneSport = new JTextField();
+    public JTextField zoneNom = new JTextField();
+    public JTextField zonePrix = new JTextField();
+    public JTextField zoneStock = new JTextField();
+    public JTextField zoneSport = new JTextField();
 
-    JComboBox<Rayon> comboRayon;
+    public JComboBox<Rayon> comboRayon;
 
-    JLabel typeLabel = new JLabel("Type d'article :");
-    String[] types = { "Nourriture", "Vêtement", "Matériel" };
-    JComboBox<String> comboType = new JComboBox<>(types);
+    public JLabel typeLabel = new JLabel("Type d'article :");
+    public String[] types = { "Nourriture", "Vêtement", "Matériel" };
+    public JComboBox<String> comboType = new JComboBox<>(types);
 
     // Bouton P1
-    JButton btnSuivant = new JButton("Suivant >");
-    JButton btnAnnuler = new JButton("Annuler");
+    public JButton btnSuivant = new JButton("Suivant >");
+    public JButton btnAnnuler = new JButton("Annuler");
 
     // Formulaire P2
-    JLabel saveur = new JLabel("Saveur :");
-    JLabel taille = new JLabel("Tailles :");
-    JLabel Longueur = new JLabel("Longueur (Cm) :");
-    JLabel Largeur = new JLabel("Largeur (Cm) :");
-    JLabel poids = new JLabel("Poids (KG) :");
+    public JLabel saveur = new JLabel("Saveur :");
+    public JLabel taille = new JLabel("Tailles :");
+    public JLabel couleur = new JLabel("Couleur :");
+    public JLabel Longueur = new JLabel("Longueur (Cm) :");
+    public JLabel Largeur = new JLabel("Largeur (Cm) :");
+    public JLabel poids = new JLabel("Poids (KG) :");
 
-    JTextField zoneSaveur = new JTextField();
-    JTextField zoneTaille = new JTextField();
-    JTextField zoneLongueur = new JTextField();
-    JTextField zoneLargeur = new JTextField();
-    JTextField zonePoids = new JTextField();
+    public JTextField zoneSaveur = new JTextField();
+    public JComboBox<String> comboTaille = new JComboBox<>(new String[] { "S", "M", "L", "XL" });
+    public JTextField zoneCouleur = new JTextField();
+    public JTextField zoneLongueur = new JTextField();
+    public JTextField zoneLargeur = new JTextField();
+    public JTextField zonePoids = new JTextField();
 
-    JTextField txtJ = new JTextField(2);
-    JTextField txtM = new JTextField(2);
-    JTextField txtA = new JTextField(4);
+    public JTextField txtJ = new JTextField(2);
+    public JTextField txtM = new JTextField(2);
+    public JTextField txtA = new JTextField(4);
 
     // CardLayout
-    CardLayout cardLayoutP1 = new CardLayout();
-    JPanel conteneurPrincipale = new JPanel(cardLayoutP1);
+    public CardLayout cardLayoutP1 = new CardLayout();
+    public JPanel conteneurPrincipale = new JPanel(cardLayoutP1);
 
-    CardLayout cardLayoutP2 = new CardLayout();
-    JPanel panelP2 = new JPanel(cardLayoutP2);
+    public CardLayout cardLayoutP2 = new CardLayout();
+    public JPanel panelP2 = new JPanel(cardLayoutP2);
 
-    Magasin magasin;
+    public Magasin magasin;
 
     public VueAjoutArticle(Magasin m) {
 
@@ -134,13 +138,18 @@ public class VueAjoutArticle extends JFrame {
                 zonePrix,
                 zoneStock,
                 zoneSport,
-                comboRayon,
                 this);
 
         btnSuivant.addActionListener(ctrlSuivant);
 
+        ControleurEnregistrerArticle ctrEnregistre = new ControleurEnregistrerArticle(m, this);
+        btnEnregistrer.addActionListener(ctrEnregistre);
+
         ControleurRetourArticle ctrlRetour = new ControleurRetourArticle(conteneurPrincipale);
         btnRetour.addActionListener(ctrlRetour);
+
+        ControleurBoutonAnnuler ctrAnnuler = new ControleurBoutonAnnuler(this);
+        btnAnnuler.addActionListener(ctrAnnuler);
     }
 
     public JPanel creerPanelNourriture() {
@@ -166,9 +175,9 @@ public class VueAjoutArticle extends JFrame {
         JPanel p = new JPanel(new GridLayout(2, 2, 10, 10));
 
         p.add(taille);
-        p.add(new JComboBox<>(new String[] { "S", "M", "L", "XL" }));
-        p.add(new JLabel("Couleur :"));
-        p.add(new JTextField());
+        p.add(comboTaille);
+        p.add(couleur);
+        p.add(zoneCouleur);
         return p;
     }
 

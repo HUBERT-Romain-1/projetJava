@@ -4,51 +4,76 @@ import Magasin.Model.*;
 import Magasin.Controleur.*;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+
 import java.awt.*;
+import java.util.Vector;
 
 public class VueConsulterClient extends JFrame {
 
-    JLabel nom = new JLabel("Nom :");
-    JLabel prenom = new JLabel("Prenom :");
-    JLabel email = new JLabel("Email :");
+    public String[] colonnes = Client.getCriteresRecherche();
 
-    JTextField zoneNom = new JTextField();
-    JTextField zonePrenom = new JTextField();
-    JTextField zoneEmail = new JTextField();
+    public JLabel categorieLabel = new JLabel("Rechercher par :");
+    public JComboBox<String> comboType = new JComboBox<>(colonnes);
+
+    public JLabel recherche = new JLabel("Valeur : ");
+    public JTextField zoneRecherche = new JTextField(15);
+
+    public DefaultTableModel modeleTable = new DefaultTableModel(colonnes, 0);
+    public JTable tableClient = new JTable(modeleTable);
 
     // Boutons spécifiques à la consultation
     JButton btnChercher = new JButton("Chercher");
-    JButton btnModifier = new JButton("Enregistrer les Modifications");
+    JButton btnEnregistrerModification = new JButton("Enregistrer les Modifications");
     JButton btnAnnuler = new JButton("Annuler");
-    JButton btnVoirListeClient = new JButton("Voir Liste Client");
 
-    private Magasin magasin;
+    public Magasin magasin;
 
     public VueConsulterClient(Magasin m) {
+
         this.magasin = m;
 
-        this.setTitle("Consulter / Modifier Client - " + magasin.getNomMagasin());
-        this.setPreferredSize(new Dimension(800, 250));
+        this.setPreferredSize(new Dimension(800, 600));
+        setTitle("Rechercher / Modification - " + m.getNomMagasin());
+        this.setLayout(new BorderLayout(15, 15));
 
-        // Formulaire (CENTER)
-        JPanel formulaire = new JPanel(new GridLayout(3, 2, 20, 20));
-        formulaire.setBorder(BorderFactory.createEmptyBorder(30, 30, 20, 30));
-        formulaire.add(nom);
-        formulaire.add(zoneNom);
-        formulaire.add(prenom);
-        formulaire.add(zonePrenom);
-        formulaire.add(email);
-        formulaire.add(zoneEmail);
+        // recherche Nord
+        JPanel recherchePanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
 
-        // Barre d'actions
+        recherchePanel.add(categorieLabel);
+        recherchePanel.add(comboType);
+
+        recherchePanel.add(recherche);
+        recherchePanel.add(zoneRecherche);
+
+        JScrollPane scrollPane = new JScrollPane(tableClient);
+        scrollPane.setBorder(BorderFactory.createTitledBorder("Liste des Clients"));
+
+        JPanel tableau = new JPanel(new BorderLayout(0, 10));
+        tableau.setBorder(BorderFactory.createEmptyBorder(0, 30, 0, 30));
+
+        tableau.add(scrollPane);
+
         JPanel boutons = new JPanel();
         boutons.add(btnAnnuler);
         boutons.add(btnChercher);
-        boutons.add(btnModifier);
-        boutons.add(btnVoirListeClient);
+        boutons.add(btnEnregistrerModification);
 
-        this.getContentPane().setLayout(new BorderLayout());
-        this.getContentPane().add(formulaire, BorderLayout.CENTER);
-        this.getContentPane().add(boutons, BorderLayout.SOUTH);
+        this.add(recherchePanel, BorderLayout.NORTH);
+        this.add(tableau, BorderLayout.CENTER);
+        this.add(boutons, BorderLayout.SOUTH);
+
+        this.majTableau(magasin.getListeClient());
+
+    }
+
+    public void majTableau(Vector<Client> liste) {
+        modeleTable.setRowCount(0);
+
+        for (int i = 0; i < liste.size(); i++) {
+            Client c = liste.get(i);
+            modeleTable.addRow(c.getLigneTableau());
+        }
+
     }
 }

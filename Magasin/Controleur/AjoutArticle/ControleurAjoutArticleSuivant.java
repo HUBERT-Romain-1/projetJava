@@ -21,7 +21,7 @@ public class ControleurAjoutArticleSuivant implements ActionListener {
     JFrame vue;
 
     public ControleurAjoutArticleSuivant(JPanel conteneur, JPanel p2, JComboBox<String> comboType, JTextField nom,
-            JTextField prix, JTextField stock, JTextField sport, JComboBox<Rayon> comboRayon, JFrame fenetre) {
+            JTextField prix, JTextField stock, JTextField sport, JFrame fenetre) {
         this.conteneurPrincipal = conteneur;
         this.panelP2 = p2;
         this.comboType = comboType;
@@ -29,7 +29,6 @@ public class ControleurAjoutArticleSuivant implements ActionListener {
         this.txtPrix = prix;
         this.txtSport = sport;
         this.txtStock = stock;
-        this.comboRayon = comboRayon;
         this.vue = fenetre;
 
         // On récupère les gestionnaires de disposition
@@ -41,7 +40,6 @@ public class ControleurAjoutArticleSuivant implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         // le type sélectionné (Nourriture, Vêtement ou Matériel)
         String typeSelectionne = (String) comboType.getSelectedItem();
-        String rayonSelectionne = (String) comboRayon.getSelectedItem();
 
         String strNom = txtNom.getText();
         String strPrix = txtPrix.getText().replace(",", "."); // On gère la virgule

@@ -1,80 +1,33 @@
 package Magasin.Controleur.AjoutArticle;
 
 import Magasin.Model.*;
+import Magasin.Vue.VueAjout.VueAjoutArticle;
+
 import javax.swing.*;
 import java.awt.event.*;
 import java.time.LocalDate;
 import java.awt.CardLayout;
 
 public class ControleurEnregistrerArticle implements ActionListener {
+
     Magasin magasin;
-    JPanel conteneurPrincipal;
-    JPanel panelP2;
-    JComboBox<String> comboType;
-    CardLayout clPrincipal;
-    CardLayout clP2;
+    VueAjoutArticle vue; // On stocke toute la fenêtre
 
-    JTextField txtNom;
-    JTextField txtPrix;
-    JTextField txtStock;
-    JTextField txtSport;
-
-    JTextField txtSaveur;
-    JTextField txtTaille;
-    JTextField txtLongueur;
-    JTextField txtLargeur;
-    JTextField txtPoids;
-
-    JTextField txtJ;
-    JTextField txtM;
-    JTextField txtA;
-    JFrame vue;
-
-    public ControleurEnregistrerArticle(Magasin m, JPanel conteneur, JPanel p2, JComboBox<String> comboType,
-            JTextField nom,
-            JTextField prix, JTextField stock, JTextField sport, JTextField saveur,
-            JTextField taille, JTextField longueur, JTextField largeur, JTextField poids,
-            JTextField jour,
-            JTextField mois,
-            JTextField annee,
-            JFrame fenetre) {
-
+    public ControleurEnregistrerArticle(Magasin m, VueAjoutArticle v) {
         this.magasin = m;
-        this.conteneurPrincipal = conteneur;
-        this.panelP2 = p2;
-        this.comboType = comboType;
-        this.txtNom = nom;
-        this.txtPrix = prix;
-        this.txtSport = sport;
-        this.txtStock = stock;
-
-        this.txtSaveur = saveur;
-        this.txtTaille = taille;
-        this.txtLongueur = longueur;
-        this.txtLargeur = largeur;
-        this.txtPoids = poids;
-
-        this.txtJ = jour;
-        this.txtM = mois;
-        this.txtA = annee;
-        this.vue = fenetre;
-
-        // On récupère les gestionnaires de disposition
-        this.clPrincipal = (CardLayout) conteneur.getLayout();
-        this.clP2 = (CardLayout) p2.getLayout();
+        this.vue = v;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         // le type sélectionné (Nourriture, Vêtement ou Matériel)
-        String typeSelectionne = (String) comboType.getSelectedItem();
-        String nomRayonChoisi = (String) comboType.getSelectedItem();
-        Rayon rayonCible = magasin.trouverRayon(nomRayonChoisi);
+        String typeSelectionne = (String) vue.comboType.getSelectedItem();
+        Rayon rayonCible = (Rayon) vue.comboRayon.getSelectedItem();
 
-        String strNom = txtNom.getText();
-        String strPrix = txtPrix.getText().replace(",", "."); // On gère la virgule
-        String strStock = txtStock.getText();
-        String strSport = txtSport.getText();
+        String strNom = vue.zoneNom.getText();
+        String strPrix = vue.zonePrix.getText().replace(",", "."); // On gère la virgule
+        String strStock = vue.zoneStock.getText();
+        String strSport = vue.zoneSport.getText();
 
         if (strNom.isEmpty() || strPrix.isEmpty() || strStock.isEmpty() || strSport.isEmpty()) {
             JOptionPane.showMessageDialog(vue,
@@ -93,12 +46,10 @@ public class ControleurEnregistrerArticle implements ActionListener {
             return;
         }
 
-        if (!magasin.peutAjouterDansRayon(typeSelectionne)) {
-            JOptionPane.showMessageDialog(vue, "Le rayon " + typeSelectionne + " est plein !", "Stock Maximum",
-                    JOptionPane.WARNING_MESSAGE);
+        if (rayonCible != null && rayonCible.estPlein()) {
+            JOptionPane.showMessageDialog(vue, "Le rayon " + rayonCible.getNomRayon() + " est plein !");
             return;
         }
-
         if (!estPrixValide(strPrix)) {
             JOptionPane.showMessageDialog(vue, "Le prix doit être un nombre positif (ex: 19.99) !",
                     "Erreur Prix",
@@ -107,28 +58,69 @@ public class ControleurEnregistrerArticle implements ActionListener {
         }
 
         if (rayonCible == null || rayonCible.estPlein()) {
-            JOptionPane.showMessageDialog(vue, "Rayon plein ou inexistant !");
+            JOptionPane.showMessageDialog(vue, "Rayon plein ",
+                    "Erreur Rayon",
+                    JOptionPane.ERROR_MESSAGE);
             return;
         }
 
         double prix = Double.parseDouble(strPrix);
         int stock = Integer.parseInt(strStock);
 
+        // champs non primaire
+
         if (typeSelectionne.equals("Nourriture")) {
             LocalDate datePeremption = validerEtCreerDate();
-            String strSaveur = txtSaveur.getText();
+            String strSaveur = vue.zoneSaveur.getText();
 
-            if (strSaveur.isEmpty()) {
-                JOptionPane.showMessageDialog(vue, "Veuillez remplir la saveur !");
+            if (strSaveur.isEmpty() || datePeremption == null) {
+                JOptionPane.showMessageDialog(vue, "Veuillez remplir la zone saveur et la date !",
+                        "Erreur Saveur",
+                        JOptionPane.ERROR_MESSAGE);
                 return;
             }
 
-            Nourriture n = new Nourriture(strNom, prix, stock, strSport, rayonCible, magasin, strSaveur,
+            new Nourriture(strNom, prix, stock, strSport, rayonCible, magasin, strSaveur,
                     datePeremption);
-            magasin.addArticle(n);
-            rayonCible.addArticle(n);
-        } else if (typeSelectionne.equals("Vetement")) {
 
+            JOptionPane.showMessageDialog(vue, "Nourriture enregistrée !");
+            System.out.println("Nourriture enregistré");
+            vue.dispose();
+
+        } else if (typeSelectionne.equals("Vetement")) {
+            String strCouleur = vue.zoneCouleur.getText();
+
+            if (strCouleur.isEmpty()) {
+                JOptionPane.showMessageDialog(vue,
+                        " Veuillez remplir la zone couleur !",
+                        "Attention",
+                        JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            new Vetement(strNom, prix, stock, strSport, rayonCible, magasin, strSport, strCouleur);
+
+            JOptionPane.showMessageDialog(vue, "Vêtement enregistrée !");
+            vue.dispose();
+        }
+
+        else {
+            String strLongeur = vue.zoneLongueur.getText();
+            String strLargeur = vue.zoneLargeur.getText();
+            String strPoids = vue.zonePoids.getText();
+
+            if (strLongeur.isEmpty() || strLargeur.isEmpty() || strPoids.isEmpty()) {
+                JOptionPane.showMessageDialog(vue,
+                        "VEuillez remplir tous les champs !",
+                        "Attention",
+                        JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            new Materiel(strNom, prix, stock, strSport, magasin, rayonCible, stock, prix, stock);
+
+            JOptionPane.showMessageDialog(vue, "Matériel enregistrée !");
+            vue.dispose();
         }
 
     }
@@ -163,15 +155,9 @@ public class ControleurEnregistrerArticle implements ActionListener {
     }
 
     public LocalDate validerEtCreerDate() {
-        String j = txtJ.getText();
-        String m = txtM.getText();
-        String a = txtA.getText();
-
-        // Vérification si vide
-        if (j.isEmpty() || m.isEmpty() || a.isEmpty()) {
-            JOptionPane.showMessageDialog(vue, "Veuillez remplir la date complète !");
-            return null;
-        }
+        String j = vue.txtJ.getText();
+        String m = vue.txtM.getText();
+        String a = vue.txtA.getText();
 
         // Verif numerique
         if (!estNumerique(j) || !estNumerique(m) || !estNumerique(a)) {
