@@ -18,16 +18,20 @@ public class Main {
                 vuePrincipaleMagasin.pack();
 
                 Fournisseur abc = new Fournisseur("ABC Coorp", "1 Rue de l'Alphabet", monMagasin);
-                Fournisseur fournisseur2 = new Fournisseur("Les seconds", "2 Rue des Perdants", monMagasin);
+                Fournisseur fournisseur2 = new Fournisseur("Les Seconds", "2 Rue des Perdants", monMagasin);
 
                 Rayon football = new Rayon("football", 100, monMagasin);
                 Rayon tennis = new Rayon("tennis", 150, monMagasin);
                 Rayon natation = new Rayon("natation", 20, monMagasin);
 
-                Article ballonFootball = new Article("Ballon de foot", 10, 10, "Football", football, fournisseur2,
-                                monMagasin);
-                Article maillotFoot = new Article("Maillot de foot", 90, 10, "Football", football, abc,
-                                monMagasin);
+                Materiel ballonFootball = new Materiel(
+                                "Ballon de foot", 10.0, 10, "Football",
+                                monMagasin, football, fournisseur2,
+                                0.400, 20.0, 20.0);
+
+                Vetement maillotFoot = new Vetement("Maillot de foot", 90, 10,
+                                "Football", football, abc, monMagasin,
+                                "L", "Bleu");
 
                 Vendeur vendeur1 = new Vendeur("A", "Bea", "98049409", monMagasin);
                 Vendeur vendeur2 = new Vendeur("Dupond", "Patrick", "0123654456",

@@ -14,6 +14,11 @@ public class Nourriture extends Article {
 
     }
 
+    @Override
+    public String getInfosSpecifiques() {
+        return "Saveur: " + this.getSaveur() + " | Exp: " + this.getDateExpiration();
+    }
+
     private String saveur;
     private LocalDate dateExpiration;
 

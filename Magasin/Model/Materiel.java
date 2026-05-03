@@ -7,6 +7,7 @@ public class Materiel extends Article {
     public Materiel(String nom, double prix, int stock, String sport, Magasin m, Rayon rayon, Fournisseur fournisseur,
             double poids, double Longueur,
             double largeur) {
+
         super(nom, prix, stock, sport, rayon, fournisseur, m);
         this.poids = poids;
         this.Longueur = Longueur;
@@ -16,6 +17,12 @@ public class Materiel extends Article {
     private double poids;
     private double Longueur;
     private double largeur;
+
+    @Override
+    public String getInfosSpecifiques() {
+        return "Poids: " + this.getPoids() + "kg | Longueur: " + this.getLongueur() +
+                " cm | Largeur:" + this.getLargeur();
+    }
 
     public double getPoids() {
         return this.poids;

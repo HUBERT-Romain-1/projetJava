@@ -17,6 +17,11 @@ public class Vetement extends Article {
     private String tailleVetement;
     private String couleurVetement;
 
+    @Override
+    public String getInfosSpecifiques() {
+        return "Taille: " + this.getTailleVetement() + " | Couleur: " + this.getCouleurVetement();
+    }
+
     public String getTailleVetement() {
         return tailleVetement;
     }

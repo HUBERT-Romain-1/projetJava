@@ -31,6 +31,26 @@ public class Article {
     private Vector<Rayon> listeRayon = new Vector<Rayon>();
     private Vector<LigneVente> listeLigneVente = new Vector<LigneVente>();
 
+    public static String[] getCriteresRecherche() {
+        return new String[] { "ID", "Nom Produit", "Prix", "Stock", "Sport", "Fournisseur", "Caractéristiques" };
+    }
+
+    public String[] getLigneTableau() {
+        return new String[] {
+                this.getIdArticle() + "",
+                this.getNomProduit(),
+                this.getPrix() + " Euro",
+                this.getStock() + "",
+                this.getSport(),
+                this.getFournisseur().getNomFournisseur() + "",
+                this.getInfosSpecifiques()
+        };
+    }
+
+    public String getInfosSpecifiques() {
+        return "---";
+    }
+
     public void addRayon(Rayon r) {
         listeRayon.add(r);
     }
