@@ -23,6 +23,19 @@ public class Vendeur {
     private Magasin magasin;
     private Vector<Vente> listeVente = new Vector<Vente>();
 
+    public static String[] getCriteresRecherche() {
+        return new String[] { "ID", "Nom", "Prénom", "Téléphone" };
+    }
+
+    public String[] getLigneTableau() {
+        return new String[] {
+                this.getIdVendeur() + "",
+                this.getNomVendeur(),
+                this.getPrenomVendeur(),
+                this.getTelephone()
+        };
+    }
+
     public void addVente(Vente v) {
         listeVente.add(v);
     }

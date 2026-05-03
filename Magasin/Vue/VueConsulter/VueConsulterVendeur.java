@@ -4,51 +4,80 @@ import Magasin.Model.*;
 import Magasin.Controleur.*;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+
 import java.awt.*;
+import java.util.Vector;
 
 public class VueConsulterVendeur extends JFrame {
-    JLabel nom = new JLabel("Nom :");
-    JLabel prenom = new JLabel("Prenom :");
-    JLabel telephone = new JLabel("Téléphone :");
 
-    JTextField zoneNom = new JTextField();
-    JTextField zonePrenom = new JTextField();
-    JTextField zoneTel = new JTextField();
+    public String[] colonnes = Vendeur.getCriteresRecherche();
 
-    JButton btnAnnuler = new JButton("Annuler");
+    public JLabel categorieLabel = new JLabel("Rechercher par :");
+    public JComboBox<String> comboType = new JComboBox<>(colonnes);
+
+    public JLabel recherche = new JLabel("Valeur : ");
+    public JTextField zoneRecherche = new JTextField(15);
+
+    public DefaultTableModel modeleTable = new DefaultTableModel(colonnes, 0);
+    public JTable tableClient = new JTable(modeleTable);
+
+    // Boutons spécifiques à la consultation
     JButton btnChercher = new JButton("Chercher");
-    JButton btnModifier = new JButton("Enregistrer les Modifications");
-    JButton btnVoirListeClient = new JButton("Voir Listes Vendeur");
+    JButton btnEnregistrerModification = new JButton("Enregistrer les Modifications");
+    JButton btnAnnuler = new JButton("Annuler");
 
-    private Magasin magasin;
+    public Magasin magasin;
 
     public VueConsulterVendeur(Magasin m) {
+
         this.magasin = m;
 
-        this.setTitle("Consulter / Modifier Vendeur - " + magasin.getNomMagasin());
-        this.setPreferredSize(new Dimension(800, 300));
+        this.setPreferredSize(new Dimension(800, 600));
+        setTitle("Rechercher / Modification Vendeur - " + m.getNomMagasin());
+        this.setLayout(new BorderLayout(15, 15));
 
-        JPanel formulaire = new JPanel(new GridLayout(3, 2, 20, 20));
-        formulaire.setBorder(BorderFactory.createEmptyBorder(30, 30, 20, 30));
+        // recherche Nord
+        JPanel recherchePanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
 
-        formulaire.add(nom);
-        formulaire.add(zoneNom);
+        recherchePanel.add(categorieLabel);
+        recherchePanel.add(comboType);
 
-        formulaire.add(prenom);
-        formulaire.add(zonePrenom);
+        recherchePanel.add(recherche);
+        recherchePanel.add(zoneRecherche);
 
-        formulaire.add(telephone);
-        formulaire.add(zoneTel);
+        JScrollPane scrollPane = new JScrollPane(tableClient);
+        scrollPane.setBorder(BorderFactory.createTitledBorder("Liste des Vendeurs"));
+
+        JPanel tableau = new JPanel(new BorderLayout(0, 10));
+        tableau.setBorder(BorderFactory.createEmptyBorder(0, 30, 0, 30));
+
+        tableau.add(scrollPane);
 
         JPanel boutons = new JPanel();
         boutons.add(btnAnnuler);
         boutons.add(btnChercher);
-        boutons.add(btnModifier);
-        boutons.add(btnVoirListeClient);
+        boutons.add(btnEnregistrerModification);
 
-        getContentPane().add(formulaire, BorderLayout.CENTER);
-        getContentPane().add(boutons, BorderLayout.SOUTH);
+        this.add(recherchePanel, BorderLayout.NORTH);
+        this.add(tableau, BorderLayout.CENTER);
+        this.add(boutons, BorderLayout.SOUTH);
+
+        // pour affichage au démarage de la vue
+        this.majTableau(magasin.getListeVendeur());
+
+        ControleurBoutonAnnuler cont = new ControleurBoutonAnnuler(this);
+        btnAnnuler.addActionListener(cont);
 
     }
 
+    public void majTableau(Vector<Vendeur> liste) {
+        modeleTable.setRowCount(0);
+
+        for (int i = 0; i < liste.size(); i++) {
+            Vendeur v = liste.get(i);
+            modeleTable.addRow(v.getLigneTableau());
+        }
+
+    }
 }

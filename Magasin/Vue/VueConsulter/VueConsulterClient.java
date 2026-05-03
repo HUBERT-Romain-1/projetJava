@@ -63,7 +63,11 @@ public class VueConsulterClient extends JFrame {
         this.add(tableau, BorderLayout.CENTER);
         this.add(boutons, BorderLayout.SOUTH);
 
+        // pour affichage au démarage de la vue
         this.majTableau(magasin.getListeClient());
+
+        ControleurBoutonAnnuler cont = new ControleurBoutonAnnuler(this);
+        btnAnnuler.addActionListener(cont);
 
     }
 
