@@ -69,6 +69,10 @@ public class Magasin {
         return this.listeRayon;
     }
 
+    public Vector<Vente> getListeVente() {
+        return this.listeVente;
+    }
+
     public Vector<Fournisseur> getListeFournisseur() {
         return this.listeFournisseur;
     }

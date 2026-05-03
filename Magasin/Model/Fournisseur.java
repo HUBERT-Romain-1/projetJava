@@ -55,8 +55,6 @@ public class Fournisseur {
     }
 
     public String toString() {
-        return "nom du fournisseur  " + this.getNomFournisseur()
-                + " | Adresse : " + this.getAdresseFournisseur()
-                + " | nom magasin : " + this.getNomMagasin();
+        return this.getIdFournisseur() + " - " + this.getNomFournisseur().toUpperCase();
     }
 }

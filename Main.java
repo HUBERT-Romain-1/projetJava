@@ -17,8 +17,8 @@ public class Main {
                 vuePrincipaleMagasin.show();
                 vuePrincipaleMagasin.pack();
 
-                Fournisseur abc = new Fournisseur("ABC Coorp", "Rue de l'alphabet", monMagasin);
-                Fournisseur fournisseur2 = new Fournisseur("Les seconds", "Rue des perdants", monMagasin);
+                Fournisseur abc = new Fournisseur("ABC Coorp", "1 Rue de l'Alphabet", monMagasin);
+                Fournisseur fournisseur2 = new Fournisseur("Les seconds", "2 Rue des Perdants", monMagasin);
 
                 Rayon football = new Rayon("football", 100, monMagasin);
                 Rayon tennis = new Rayon("tennis", 150, monMagasin);
@@ -33,10 +33,9 @@ public class Main {
                 Vendeur vendeur2 = new Vendeur("Dupond", "Patrick", "0123654456",
                                 monMagasin);
 
-                // Vente vente1 = new Vente(null, dimitri, vendeur2, monMagasin);
-                // vente1.ajouterProduit(ballonFootball, 2);
-                // vente1.ajouterProduit(velo, 1);
-                // vente1.ajouterProduit(barreDeChocolat, 8);
+                Vente vente1 = new Vente(LocalDate.now(), dimitri, vendeur2, monMagasin);
+                vente1.ajouterProduit(ballonFootball, 2);
+                vente1.ajouterProduit(maillotFoot, 1);
 
                 // vente1.toString();
                 // vente1.validerVente();

@@ -28,6 +28,20 @@ public class Vente {
     private Client client;
     private Vendeur vendeur;
 
+    public static String[] getCriteresRecherche() {
+        return new String[] { "ID Vente", "Date Vente", "Nom Client", "Nom Vendeur", "Total" };
+    }
+
+    public String[] getLigneTableau() {
+        return new String[] {
+                this.getIdVente() + "",
+                this.getDateVente() + "",
+                this.client.getNomClient(),
+                this.vendeur.getNomVendeur(),
+                this.getSommeTotal() + "",
+        };
+    }
+
     public void addLigneVente(LigneVente lignev) {
         listeLigneVente.add(lignev);
 

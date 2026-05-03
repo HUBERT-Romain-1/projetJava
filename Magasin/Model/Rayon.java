@@ -22,6 +22,18 @@ public class Rayon {
     private Vector<Article> listeArticle = new Vector<Article>();
     private Magasin magasin;
 
+    public static String[] getCriteresRecherche() {
+        return new String[] { "ID", "Nom Rayon", "Capacité maximum" };
+    }
+
+    public String[] getLigneTableau() {
+        return new String[] {
+                this.getIdRayon() + "",
+                this.getNomRayon(),
+                this.getCapacite() + ""
+        };
+    }
+
     public boolean estPlein() {
         return listeArticle.size() >= capacite;
     }

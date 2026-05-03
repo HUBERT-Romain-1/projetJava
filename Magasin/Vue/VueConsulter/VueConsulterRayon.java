@@ -4,46 +4,80 @@ import Magasin.Model.*;
 import Magasin.Controleur.*;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+
 import java.awt.*;
+import java.util.Vector;
 
 public class VueConsulterRayon extends JFrame {
 
-    JLabel nom = new JLabel("Nom :");
-    JLabel capacite = new JLabel("Capacité maximum :");
+    public String[] colonnes = Rayon.getCriteresRecherche();
 
-    JTextField zoneNom = new JTextField();
-    JTextField zoneCapacite = new JTextField();
+    public JLabel categorieLabel = new JLabel("Rechercher par :");
+    public JComboBox<String> comboType = new JComboBox<>(colonnes);
 
+    public JLabel recherche = new JLabel("Valeur : ");
+    public JTextField zoneRecherche = new JTextField(15);
+
+    public DefaultTableModel modeleTable = new DefaultTableModel(colonnes, 0);
+    public JTable tableRayon = new JTable(modeleTable);
+
+    // Boutons spécifiques à la consultation
     JButton btnChercher = new JButton("Chercher");
-    JButton btnModifier = new JButton("Enregistrer les Modifications");
+    JButton btnEnregistrerModification = new JButton("Enregistrer les Modifications");
     JButton btnAnnuler = new JButton("Annuler");
-    JButton btnVoirListeClient = new JButton("Voir Liste Rayon");
 
-    private Magasin magasin;
+    public Magasin magasin;
 
     public VueConsulterRayon(Magasin m) {
+
         this.magasin = m;
 
-        this.setTitle("Consulter / Modifier Rayon - " + magasin.getNomMagasin());
-        this.setPreferredSize(new Dimension(800, 250));
+        this.setPreferredSize(new Dimension(800, 600));
+        setTitle("Rechercher / Modification - Rayon " + m.getNomMagasin());
+        this.setLayout(new BorderLayout(15, 15));
 
-        JPanel formulaire = new JPanel(new GridLayout(2, 2, 20, 20));
-        formulaire.setBorder(BorderFactory.createEmptyBorder(30, 30, 20, 30));
+        // recherche Nord
+        JPanel recherchePanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
 
-        formulaire.add(nom);
-        formulaire.add(zoneNom);
+        recherchePanel.add(categorieLabel);
+        recherchePanel.add(comboType);
 
-        formulaire.add(capacite);
-        formulaire.add(zoneCapacite);
+        recherchePanel.add(recherche);
+        recherchePanel.add(zoneRecherche);
+
+        JScrollPane scrollPane = new JScrollPane(tableRayon);
+        scrollPane.setBorder(BorderFactory.createTitledBorder("Liste des Rayons"));
+
+        JPanel tableau = new JPanel(new BorderLayout(0, 10));
+        tableau.setBorder(BorderFactory.createEmptyBorder(0, 30, 0, 30));
+
+        tableau.add(scrollPane);
 
         JPanel boutons = new JPanel();
         boutons.add(btnAnnuler);
         boutons.add(btnChercher);
-        boutons.add(btnModifier);
-        boutons.add(btnVoirListeClient);
+        boutons.add(btnEnregistrerModification);
 
-        getContentPane().add(formulaire, BorderLayout.CENTER);
-        getContentPane().add(boutons, BorderLayout.SOUTH);
+        this.add(recherchePanel, BorderLayout.NORTH);
+        this.add(tableau, BorderLayout.CENTER);
+        this.add(boutons, BorderLayout.SOUTH);
+
+        // pour affichage au démarage de la vue
+        this.majTableau(magasin.getListeRayon());
+
+        ControleurBoutonAnnuler cont = new ControleurBoutonAnnuler(this);
+        btnAnnuler.addActionListener(cont);
+
+    }
+
+    public void majTableau(Vector<Rayon> liste) {
+        modeleTable.setRowCount(0);
+
+        for (int i = 0; i < liste.size(); i++) {
+            Rayon r = liste.get(i);
+            modeleTable.addRow(r.getLigneTableau());
+        }
 
     }
 }

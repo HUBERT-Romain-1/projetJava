@@ -1,60 +1,83 @@
 package Magasin.Vue.VueConsulter;
 
 import Magasin.Model.*;
+import Magasin.Controleur.*;
+
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+
 import java.awt.*;
+import java.util.Vector;
 
 public class VueConsulterVente extends JFrame {
 
-    Magasin magasin;
+    public String[] colonnes = Vente.getCriteresRecherche();
 
-    JComboBox<Client> comboClients;
-    JComboBox<Vendeur> comboVendeurs;
+    public JLabel categorieLabel = new JLabel("Rechercher par :");
+    public JComboBox<String> comboType = new JComboBox<>(colonnes);
 
-    // Date
-    JTextField txtJ = new JTextField(2);
-    JTextField txtM = new JTextField(2);
-    JTextField txtA = new JTextField(4);
+    public JLabel recherche = new JLabel("Valeur : ");
+    public JTextField zoneRecherche = new JTextField(15);
 
+    public DefaultTableModel modeleTable = new DefaultTableModel(colonnes, 0);
+    public JTable tableVente = new JTable(modeleTable);
+
+    // Boutons spécifiques à la consultation
     JButton btnChercher = new JButton("Chercher");
-    JButton btnModifier = new JButton("Enregistrer les Modifications");
+    JButton btnEnregistrerModification = new JButton("Enregistrer les Modifications");
     JButton btnAnnuler = new JButton("Annuler");
-    JButton btnVoirListeClient = new JButton("Voir Liste Client");
+
+    public Magasin magasin;
 
     public VueConsulterVente(Magasin m) {
+
         this.magasin = m;
 
-        this.setTitle("Consulter / Modifier Vente - " + magasin.getNomMagasin());
+        this.setPreferredSize(new Dimension(800, 600));
+        setTitle("Rechercher / Modification - Vente " + m.getNomMagasin());
+        this.setLayout(new BorderLayout(15, 15));
 
-        this.setPreferredSize(new Dimension(800, 250));
+        // recherche Nord
+        JPanel recherchePanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
 
-        JPanel formulaire = new JPanel(new GridLayout(3, 2, 20, 20));
-        formulaire.setBorder(BorderFactory.createEmptyBorder(20, 30, 20, 30));
+        recherchePanel.add(categorieLabel);
+        recherchePanel.add(comboType);
 
-        formulaire.add(new JLabel("Choisir le Client :"));
-        comboClients = new JComboBox<>(magasin.getListeClient());
-        formulaire.add(comboClients);
+        recherchePanel.add(recherche);
+        recherchePanel.add(zoneRecherche);
 
-        formulaire.add(new JLabel("Choisir le Vendeur :"));
-        comboVendeurs = new JComboBox<>(magasin.getListeVendeur());
-        formulaire.add(comboVendeurs);
+        JScrollPane scrollPane = new JScrollPane(tableVente);
+        scrollPane.setBorder(BorderFactory.createTitledBorder("Liste des Ventes"));
 
-        formulaire.add(new JLabel("Date de vente (JJ/MM/AAAA) :"));
-        JPanel pDate = new JPanel();
-        pDate.add(txtJ);
-        pDate.add(new JLabel("/"));
-        pDate.add(txtM);
-        pDate.add(new JLabel("/"));
-        pDate.add(txtA);
-        formulaire.add(pDate);
+        JPanel tableau = new JPanel(new BorderLayout(0, 10));
+        tableau.setBorder(BorderFactory.createEmptyBorder(0, 30, 0, 30));
+
+        tableau.add(scrollPane);
 
         JPanel boutons = new JPanel();
         boutons.add(btnAnnuler);
         boutons.add(btnChercher);
-        boutons.add(btnModifier);
-        boutons.add(btnVoirListeClient);
+        boutons.add(btnEnregistrerModification);
 
-        getContentPane().add(formulaire, BorderLayout.CENTER);
-        getContentPane().add(boutons, BorderLayout.SOUTH);
+        this.add(recherchePanel, BorderLayout.NORTH);
+        this.add(tableau, BorderLayout.CENTER);
+        this.add(boutons, BorderLayout.SOUTH);
+
+        // pour affichage au démarage de la vue
+        this.majTableau(magasin.getListeVente());
+
+        ControleurBoutonAnnuler cont = new ControleurBoutonAnnuler(this);
+        btnAnnuler.addActionListener(cont);
+
+    }
+
+    public void majTableau(Vector<Vente> liste) {
+        modeleTable.setRowCount(0);
+
+        for (int i = 0; i < liste.size(); i++) {
+            Vente v = liste.get(i);
+            modeleTable.addRow(v.getLigneTableau());
+        }
+
     }
 }

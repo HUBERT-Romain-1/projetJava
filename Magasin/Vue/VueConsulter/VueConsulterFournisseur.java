@@ -20,7 +20,7 @@ public class VueConsulterFournisseur extends JFrame {
     public JTextField zoneRecherche = new JTextField(15);
 
     public DefaultTableModel modeleTable = new DefaultTableModel(colonnes, 0);
-    public JTable tableClient = new JTable(modeleTable);
+    public JTable tableFournisseur = new JTable(modeleTable);
 
     // Boutons spécifiques à la consultation
     JButton btnChercher = new JButton("Chercher");
@@ -46,7 +46,7 @@ public class VueConsulterFournisseur extends JFrame {
         recherchePanel.add(recherche);
         recherchePanel.add(zoneRecherche);
 
-        JScrollPane scrollPane = new JScrollPane(tableClient);
+        JScrollPane scrollPane = new JScrollPane(tableFournisseur);
         scrollPane.setBorder(BorderFactory.createTitledBorder("Liste des Fournisseurs"));
 
         JPanel tableau = new JPanel(new BorderLayout(0, 10));
