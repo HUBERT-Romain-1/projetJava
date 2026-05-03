@@ -34,7 +34,7 @@ public class VueConsulterClient extends JFrame {
         this.magasin = m;
 
         this.setPreferredSize(new Dimension(800, 600));
-        setTitle("Rechercher / Modification - " + m.getNomMagasin());
+        setTitle("Rechercher / Modification -  Client " + m.getNomMagasin());
         this.setLayout(new BorderLayout(15, 15));
 
         // recherche Nord

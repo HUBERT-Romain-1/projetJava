@@ -1,9 +1,7 @@
 package Magasin.Vue.VueAjout;
 
-import Magasin.Controleur.ControleurBoutonAnnuler;
-import Magasin.Controleur.AjoutArticle.ControleurAjoutArticleSuivant;
-import Magasin.Controleur.AjoutArticle.ControleurEnregistrerArticle;
-import Magasin.Controleur.AjoutArticle.ControleurRetourArticle;
+import Magasin.Controleur.AjoutArticle.*;
+import Magasin.Controleur.*;
 import Magasin.Model.*;
 import javax.swing.*;
 import java.awt.*;
@@ -27,6 +25,9 @@ public class VueAjoutArticle extends JFrame {
     public JLabel typeLabel = new JLabel("Type d'article :");
     public String[] types = { "Nourriture", "Vêtement", "Matériel" };
     public JComboBox<String> comboType = new JComboBox<>(types);
+
+    public JLabel fournisseur = new JLabel("Fournisseur :");
+    public JComboBox<Fournisseur> comboFournisseur;
 
     // Bouton P1
     public JButton btnSuivant = new JButton("Suivant >");
@@ -65,13 +66,13 @@ public class VueAjoutArticle extends JFrame {
         this.magasin = m;
 
         setTitle("Ajout d'un nouvel Article - " + m.getNomMagasin());
-        this.setPreferredSize(new Dimension(600, 350));
+        this.setPreferredSize(new Dimension(600, 400));
 
         JPanel page1 = new JPanel();
         page1.setLayout(new BorderLayout());
 
         // Formulaire P1
-        JPanel formulaire = new JPanel(new GridLayout(6, 2, 20, 20));
+        JPanel formulaire = new JPanel(new GridLayout(7, 2, 20, 20));
         formulaire.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 
         formulaire.add(nom);
@@ -92,6 +93,10 @@ public class VueAjoutArticle extends JFrame {
         formulaire.add(rayon);
         comboRayon = new JComboBox<>(magasin.getListeRayon());
         formulaire.add(comboRayon);
+
+        formulaire.add(fournisseur);
+        comboFournisseur = new JComboBox<>(magasin.getListeFournisseur());
+        formulaire.add(comboFournisseur);
 
         // Bouton p1
         JPanel boutons = new JPanel(new GridLayout(1, 2, 20, 20));
@@ -138,6 +143,7 @@ public class VueAjoutArticle extends JFrame {
                 zonePrix,
                 zoneStock,
                 zoneSport,
+                comboFournisseur,
                 this);
 
         btnSuivant.addActionListener(ctrlSuivant);

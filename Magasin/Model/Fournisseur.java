@@ -10,16 +10,36 @@ public class Fournisseur {
         this.magasin = m;
 
         m.addFournisseur(this);
+
+        this.idFournisseur = compteurID++;
     }
 
+    private static int compteurID = 2000;
+    private int idFournisseur;
     private String nomFournisseur;
     private String lieuFournisseur;
     private Magasin magasin;
 
     private Vector<Article> listeArticle = new Vector<Article>();
 
+    public static String[] getCriteresRecherche() {
+        return new String[] { "ID", "Nom fournisseur", "Adresse fournisseur" };
+    }
+
+    public String[] getLigneTableau() {
+        return new String[] {
+                this.getIdFournisseur() + "",
+                this.getNomFournisseur(),
+                this.getAdresseFournisseur(),
+        };
+    }
+
     public void addArticle(Article a) {
         listeArticle.add(a);
+    }
+
+    public int getIdFournisseur() {
+        return this.idFournisseur;
     }
 
     public String getNomFournisseur() {

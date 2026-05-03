@@ -68,7 +68,7 @@ public class VuePrincipale extends JFrame {
         // 4. Zone du bas : Statistique
         JPanel sudPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         sudPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 50, 0)); // Marge en bas
-        statistique.setPreferredSize(new Dimension(610, 60)); // Largeur combinée des deux colonnes environ
+        statistique.setPreferredSize(new Dimension(610, 60));
         sudPanel.add(statistique);
 
         // 5. Assemblage final

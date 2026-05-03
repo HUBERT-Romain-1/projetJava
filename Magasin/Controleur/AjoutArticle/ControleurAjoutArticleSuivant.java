@@ -18,10 +18,12 @@ public class ControleurAjoutArticleSuivant implements ActionListener {
     JTextField txtStock;
     JTextField txtSport;
 
+    JComboBox<Fournisseur> comboFournisseur;
+
     JFrame vue;
 
     public ControleurAjoutArticleSuivant(JPanel conteneur, JPanel p2, JComboBox<String> comboType, JTextField nom,
-            JTextField prix, JTextField stock, JTextField sport, JFrame fenetre) {
+            JTextField prix, JTextField stock, JTextField sport, JComboBox<Fournisseur> f, JFrame fenetre) {
         this.conteneurPrincipal = conteneur;
         this.panelP2 = p2;
         this.comboType = comboType;

@@ -10,6 +10,7 @@ import Magasin.Vue.VueAjout.VueAjoutVendeur;
 import Magasin.Vue.VueAjout.VueAjoutVente;
 import Magasin.Vue.VueConsulter.VueConsulterArticle;
 import Magasin.Vue.VueConsulter.VueConsulterClient;
+import Magasin.Vue.VueConsulter.VueConsulterFournisseur;
 import Magasin.Vue.VueConsulter.VueConsulterRayon;
 import Magasin.Vue.VueConsulter.VueConsulterVendeur;
 import Magasin.Vue.VueConsulter.VueConsulterVente;
@@ -56,10 +57,6 @@ public class ControleurPagePrincipale implements ActionListener {
             vue = new VueAjoutRayon(magasin);
         }
 
-        else if (texteBouton.equals("Ajouter Rayon")) {
-            vue = new VueAjoutRayon(magasin);
-        }
-
         else if (texteBouton.equals("Consulter Client")) {
             vue = new VueConsulterClient(magasin);
         }
@@ -77,7 +74,7 @@ public class ControleurPagePrincipale implements ActionListener {
         }
 
         else if (texteBouton.equals("Consulter Fournisseur")) {
-            vue = new VueConsulterArticle(magasin);
+            vue = new VueConsulterFournisseur(magasin);
         }
 
         else if (texteBouton.equals("Consulter Rayon")) {

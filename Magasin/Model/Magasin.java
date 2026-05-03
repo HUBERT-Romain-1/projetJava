@@ -69,6 +69,10 @@ public class Magasin {
         return this.listeRayon;
     }
 
+    public Vector<Fournisseur> getListeFournisseur() {
+        return this.listeFournisseur;
+    }
+
     public Rayon trouverRayon(String nomRayon) {
         for (int i = 0; i < listeRayon.size(); i++) {
             Rayon r = listeRayon.get(i);

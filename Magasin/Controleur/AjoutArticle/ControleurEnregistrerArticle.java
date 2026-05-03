@@ -23,6 +23,7 @@ public class ControleurEnregistrerArticle implements ActionListener {
         // le type sélectionné (Nourriture, Vêtement ou Matériel)
         String typeSelectionne = (String) vue.comboType.getSelectedItem();
         Rayon rayonCible = (Rayon) vue.comboRayon.getSelectedItem();
+        Fournisseur fournisseur = (Fournisseur) vue.comboFournisseur.getSelectedItem();
 
         String strNom = vue.zoneNom.getText();
         String strPrix = vue.zonePrix.getText().replace(",", "."); // On gère la virgule
@@ -80,15 +81,16 @@ public class ControleurEnregistrerArticle implements ActionListener {
                 return;
             }
 
-            new Nourriture(strNom, prix, stock, strSport, rayonCible, magasin, strSaveur,
+            new Nourriture(strNom, prix, stock, strSport, rayonCible, fournisseur, magasin, strSaveur,
                     datePeremption);
 
             JOptionPane.showMessageDialog(vue, "Nourriture enregistrée !");
             System.out.println("Nourriture enregistré");
             vue.dispose();
 
-        } else if (typeSelectionne.equals("Vetement")) {
+        } else if (typeSelectionne.equals("Vêtement")) {
             String strCouleur = vue.zoneCouleur.getText();
+            String taille = (String) vue.comboTaille.getSelectedItem();
 
             if (strCouleur.isEmpty()) {
                 JOptionPane.showMessageDialog(vue,
@@ -98,26 +100,39 @@ public class ControleurEnregistrerArticle implements ActionListener {
                 return;
             }
 
-            new Vetement(strNom, prix, stock, strSport, rayonCible, magasin, strSport, strCouleur);
+            new Vetement(strNom, prix, stock, strSport, rayonCible, fournisseur, magasin, taille, strCouleur);
 
             JOptionPane.showMessageDialog(vue, "Vêtement enregistrée !");
             vue.dispose();
         }
 
         else {
-            String strLongeur = vue.zoneLongueur.getText();
-            String strLargeur = vue.zoneLargeur.getText();
-            String strPoids = vue.zonePoids.getText();
+
+            String strPoids = vue.zonePoids.getText() + "";
+            String strLargeur = vue.zoneLargeur.getText() + "";
+            String strLongeur = vue.zoneLongueur.getText() + "";
 
             if (strLongeur.isEmpty() || strLargeur.isEmpty() || strPoids.isEmpty()) {
-                JOptionPane.showMessageDialog(vue,
-                        "VEuillez remplir tous les champs !",
+                JOptionPane.showMessageDialog(vue, "Veuillez remplir tous les champs !",
                         "Attention",
                         JOptionPane.ERROR_MESSAGE);
                 return;
             }
 
-            new Materiel(strNom, prix, stock, strSport, magasin, rayonCible, stock, prix, stock);
+            if (!estPrixValide(strLongeur) || !estPrixValide(strLargeur) || !estPrixValide(strPoids)) {
+                JOptionPane.showMessageDialog(vue,
+                        "Les dimensions et le poids doivent être des nombres valides (ex: 12.5)",
+                        "Erreur de saisie",
+                        JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            Double doubleLongeur = Double.parseDouble(vue.zoneLongueur.getText());
+            Double doubleLargeur = Double.parseDouble(vue.zoneLargeur.getText());
+            Double doublePoids = Double.parseDouble(vue.zonePoids.getText());
+
+            Materiel m = new Materiel(strNom, prix, stock, strSport, magasin, rayonCible,
+                    fournisseur, doublePoids, doubleLongeur, doubleLargeur);
 
             JOptionPane.showMessageDialog(vue, "Matériel enregistrée !");
             vue.dispose();

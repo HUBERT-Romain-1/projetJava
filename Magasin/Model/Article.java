@@ -5,11 +5,12 @@ import java.time.LocalDate;
 import java.util.*;
 
 public class Article {
-    public Article(String nom, double prix, int stock, String sport, Rayon rayon, Magasin m) {
+    public Article(String nom, double prix, int stock, String sport, Rayon rayon, Fournisseur f, Magasin m) {
         this.nomProduit = nom;
         this.prix = prix;
         this.stock = stock;
         this.sport = sport;
+        this.fournisseur = f;
         this.magasin = m;
 
         this.listeRayon.add(rayon);
@@ -25,6 +26,7 @@ public class Article {
     private double prix;
     private int stock;
     private String sport;
+    private Fournisseur fournisseur;
     private Magasin magasin;
     private Vector<Rayon> listeRayon = new Vector<Rayon>();
     private Vector<LigneVente> listeLigneVente = new Vector<LigneVente>();
@@ -79,6 +81,10 @@ public class Article {
 
     public String getSport() {
         return this.sport;
+    }
+
+    public Fournisseur getFournisseur() {
+        return this.fournisseur;
     }
 
     public Magasin getMagasin() {

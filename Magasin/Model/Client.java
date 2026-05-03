@@ -29,10 +29,10 @@ public class Client {
 
     public String[] getLigneTableau() {
         return new String[] {
-                this.idClient + "",
-                this.nomClient,
-                this.prenomClient,
-                this.email
+                this.getIdClient() + "",
+                this.getNomClient(),
+                this.getPrenomClient(),
+                this.getEmail()
         };
     }
 

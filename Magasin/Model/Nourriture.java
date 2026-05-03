@@ -6,9 +6,9 @@ import java.util.*;
 
 public class Nourriture extends Article {
 
-    public Nourriture(String nom, double prix, int stock, String sport, Rayon rayon,
+    public Nourriture(String nom, double prix, int stock, String sport, Rayon rayon, Fournisseur fournisseur,
             Magasin m, String saveur, LocalDate date) {
-        super(nom, prix, stock, sport, rayon, m);
+        super(nom, prix, stock, sport, rayon, fournisseur, m);
         this.saveur = saveur;
         this.dateExpiration = date;
 

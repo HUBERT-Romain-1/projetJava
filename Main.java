@@ -17,13 +17,16 @@ public class Main {
                 vuePrincipaleMagasin.show();
                 vuePrincipaleMagasin.pack();
 
+                Fournisseur abc = new Fournisseur("ABC Coorp", "Rue de l'alphabet", monMagasin);
+                Fournisseur fournisseur2 = new Fournisseur("Les seconds", "Rue des perdants", monMagasin);
+
                 Rayon football = new Rayon("football", 100, monMagasin);
                 Rayon tennis = new Rayon("tennis", 150, monMagasin);
                 Rayon natation = new Rayon("natation", 20, monMagasin);
 
-                Article ballonFootball = new Article("Ballon de foot", 10, 10, "Football", football,
+                Article ballonFootball = new Article("Ballon de foot", 10, 10, "Football", football, fournisseur2,
                                 monMagasin);
-                Article maillotFoot = new Article("Maillot de foot", 90, 10, "Football", football,
+                Article maillotFoot = new Article("Maillot de foot", 90, 10, "Football", football, abc,
                                 monMagasin);
 
                 Vendeur vendeur1 = new Vendeur("A", "Bea", "98049409", monMagasin);
