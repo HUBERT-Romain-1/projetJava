@@ -110,6 +110,24 @@ public class Magasin {
         return tabClient;
     }
 
+    public Vector<Fournisseur> rechercherFournisseur(String saisie, String typeCritere) {
+        Vector<Fournisseur> tabFournisseur = new Vector<Fournisseur>();
+        for (int i = 0; i < listeFournisseur.size(); i++) {
+            Fournisseur f = listeFournisseur.get(i);
+
+            if (typeCritere.equals("ID") && (f.getIdFournisseur() + "").equals(saisie)) {
+                tabFournisseur.add(f);
+            } else if (typeCritere.equals("Nom fournisseur") &&
+                    f.getNomFournisseur().equalsIgnoreCase(saisie)) {
+                tabFournisseur.add(f);
+            } else if (typeCritere.equals("Adresse fournisseur") &&
+                    f.getAdresseFournisseur().equalsIgnoreCase(saisie)) {
+                tabFournisseur.add(f);
+            }
+        }
+        return tabFournisseur;
+    }
+
     // public Vector<Article> rechercherArticle(String saisie, String typeCritere) {
     // Vector<Article> tabArticle = new Vector<Article>();
     // for (int i = 0; i < listeClient.size(); i++) {

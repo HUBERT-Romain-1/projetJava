@@ -2,6 +2,7 @@ package Magasin.Vue.VueConsulter;
 
 import Magasin.Model.*;
 import Magasin.Controleur.*;
+import Magasin.Controleur.ConsulterFournisseur.*;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -68,6 +69,12 @@ public class VueConsulterFournisseur extends JFrame {
 
         ControleurBoutonAnnuler cont = new ControleurBoutonAnnuler(this);
         btnAnnuler.addActionListener(cont);
+
+        ControleurRechercherFournisseur controleurRecherche = new ControleurRechercherFournisseur(comboType,
+                zoneRecherche,
+                modeleTable, m);
+
+        btnChercher.addActionListener(controleurRecherche);
 
     }
 
