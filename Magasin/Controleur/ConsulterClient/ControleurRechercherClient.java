@@ -31,11 +31,17 @@ public class ControleurRechercherClient implements ActionListener {
         String critere = (String) combo.getSelectedItem();
         String texte = zoneTexte.getText();
 
+        Vector<Client> resultats;
         // Vide le tableau
         this.modele.setRowCount(0);
 
-        // la liste des Client rechercher Par le critere
-        Vector<Client> resultats = magasin.rechercherClient(texte, critere);
+        if (texte.isEmpty()) {
+            resultats = magasin.getListeClient();
+        } else {
+
+            // la liste des Client rechercher Par le critere
+            resultats = magasin.rechercherClient(texte, critere);
+        }
 
         for (int i = 0; i < resultats.size(); i++) {
             Client a = resultats.get(i);
@@ -43,4 +49,5 @@ public class ControleurRechercherClient implements ActionListener {
         }
 
     }
+
 }
