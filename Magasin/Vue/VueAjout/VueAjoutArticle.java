@@ -160,6 +160,7 @@ public class VueAjoutArticle extends JFrame {
 
     public JPanel creerPanelNourriture() {
         JPanel p = new JPanel(new GridLayout(2, 2, 10, 10));
+        p.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
         // Panel date
         JPanel pDate = new JPanel(new FlowLayout(FlowLayout.LEFT, 5, 0));
         pDate.add(txtJ);
@@ -180,6 +181,8 @@ public class VueAjoutArticle extends JFrame {
     public JPanel creerPanelVetement() {
         JPanel p = new JPanel(new GridLayout(2, 2, 10, 10));
 
+        p.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+
         p.add(taille);
         p.add(comboTaille);
         p.add(couleur);
@@ -189,6 +192,8 @@ public class VueAjoutArticle extends JFrame {
 
     public JPanel creerPanelMateriel() {
         JPanel p = new JPanel(new GridLayout(3, 2, 10, 10));
+        p.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+
         p.add(poids);
         p.add(zonePoids);
         p.add(Largeur);

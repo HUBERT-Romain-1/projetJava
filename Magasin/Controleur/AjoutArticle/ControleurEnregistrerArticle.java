@@ -6,7 +6,6 @@ import Magasin.Vue.VueAjout.VueAjoutArticle;
 import javax.swing.*;
 import java.awt.event.*;
 import java.time.LocalDate;
-import java.awt.CardLayout;
 
 public class ControleurEnregistrerArticle implements ActionListener {
 
