@@ -92,6 +92,33 @@ public class Magasin {
         return (r != null && !r.estPlein());
     }
 
+    public Vector<Article> rechercherArticle(String saisie, String typeCritere) {
+        Vector<Article> tabArticle = new Vector<Article>();
+        for (int i = 0; i < listeArticle.size(); i++) {
+            Article a = listeArticle.get(i);
+
+            if (typeCritere.equals("ID") && (a.getIdArticle() + "").equals(saisie)) {
+                tabArticle.add(a);
+            } else if (typeCritere.equals("Nom Produit") &&
+                    a.getNomProduit().equalsIgnoreCase(saisie)) {
+                tabArticle.add(a);
+            } else if (typeCritere.equals("Prix") &&
+                    (a.getPrix() + "").equals(saisie)) {
+                tabArticle.add(a);
+            } else if (typeCritere.equals("Stock") &&
+                    (a.getStock() + "").equals(saisie)) {
+                tabArticle.add(a);
+            } else if (typeCritere.equals("Sport") &&
+                    (a.getSport() + "").equals(saisie)) {
+                tabArticle.add(a);
+            } else if (typeCritere.equals("Fournisseur") &&
+                    (a.getFournisseur() + "").equals(saisie)) {
+                tabArticle.add(a);
+            }
+        }
+        return tabArticle;
+    }
+
     public Vector<Client> rechercherClient(String saisie, String typeCritere) {
         Vector<Client> tabClient = new Vector<Client>();
         for (int i = 0; i < listeClient.size(); i++) {
