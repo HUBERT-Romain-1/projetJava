@@ -24,7 +24,7 @@ public class Vendeur {
     private Vector<Vente> listeVente = new Vector<Vente>();
 
     public static String[] getCriteresRecherche() {
-        return new String[] { "ID", "Nom", "Prénom", "Téléphone" };
+        return new String[] { "ID", "Nom", "Prénom", "Téléphone", " CA" };
     }
 
     public String[] getLigneTableau() {
@@ -32,7 +32,8 @@ public class Vendeur {
                 this.getIdVendeur() + "",
                 this.getNomVendeur(),
                 this.getPrenomVendeur(),
-                this.getTelephone()
+                this.getTelephone(),
+                this.calculCA() + ""
         };
     }
 

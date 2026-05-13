@@ -61,7 +61,13 @@ public class ControleurValiderVente implements ActionListener {
                 }
             }
 
+            // Juste après la boucle for qui ajoute les produits
+            System.out.println("DEBUG : Montant de la vente générée : " + nouvelleVente.getSommeTotal());
+
             nouvelleVente.validerVente();
+
+            // Juste après la validation
+            System.out.println("DEBUG : CA du vendeur après validation : " + leVendeur.calculCA());
 
             JOptionPane.showMessageDialog(fenetre, "Vente enregistrée avec succès !");
             fenetre.dispose();

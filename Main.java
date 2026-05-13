@@ -41,9 +41,8 @@ public class Main {
                 vente1.ajouterProduit(ballonFootball, 2);
                 vente1.ajouterProduit(maillotFoot, 1);
 
-                // vente1.toString();
-                // vente1.validerVente();
-                // vendeur2.calculCA();
+                vente1.toString();
+                vente1.validerVente();
 
                 // Article top = monMagasin.articlePlusVendu();
                 // System.out.println("Le meilleur produit : " + top.getNomProduit()

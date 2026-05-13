@@ -171,7 +171,7 @@ public class Magasin {
         return tabRayon;
     }
 
-    // return new String[] { "ID", "Nom", "Prénom", "Téléphone" };
+    // return new String[] { "ID", "Nom", "Prénom", "Téléphone" , "CA"};
     public Vector<Vendeur> rechercherVendeur(String saisie, String typeCritere) {
         Vector<Vendeur> tabVendeur = new Vector<Vendeur>();
         for (int i = 0; i < listeVendeur.size(); i++) {
@@ -185,9 +185,33 @@ public class Magasin {
                 tabVendeur.add(v);
             } else if (typeCritere.equals("Téléphone") && v.getTelephone().equalsIgnoreCase(saisie)) {
                 tabVendeur.add(v);
+            } else if (typeCritere.equals("CA") && (v.calculCA() + "").equalsIgnoreCase(saisie)) {
+                tabVendeur.add(v);
             }
         }
         return tabVendeur;
+    }
+
+    // return new String[] { "ID Vente", "Date Vente", "Nom Client", "Nom Vendeur",
+    // "Total" };
+    public Vector<Vente> rechercherVente(String saisie, String typeCritere) {
+        Vector<Vente> tabVente = new Vector<Vente>();
+        for (int i = 0; i < listeVente.size(); i++) {
+            Vente v = listeVente.get(i);
+
+            if (typeCritere.equals("ID Vente") && (v.getIdVente() + "").equals(saisie)) {
+                tabVente.add(v);
+            } else if (typeCritere.equals("Date Vente") && (v.getDateVente() + "").equalsIgnoreCase(saisie)) {
+                tabVente.add(v);
+            } else if (typeCritere.equals("Nom Client") && (v.getClient() + "").equalsIgnoreCase(saisie)) {
+                tabVente.add(v);
+            } else if (typeCritere.equals("Nom Vendeur") && (v.getVendeur() + "").equalsIgnoreCase(saisie)) {
+                tabVente.add(v);
+            } else if (typeCritere.equals("Total ") && (v.getSommeTotal() + "").equalsIgnoreCase(saisie)) {
+                tabVente.add(v);
+            }
+        }
+        return tabVente;
     }
 
     // public Vector<Article> rechercherArticle(String saisie, String typeCritere) {

@@ -24,7 +24,7 @@ public class Client {
     private Magasin magasin;
 
     public static String[] getCriteresRecherche() {
-        return new String[] { "ID", "Nom", "Prénom", "Email" };
+        return new String[] { "ID", "Nom", "Prénom", "Email", "Calcul Depense" };
     }
 
     public String[] getLigneTableau() {
@@ -32,7 +32,8 @@ public class Client {
                 this.getIdClient() + "",
                 this.getNomClient(),
                 this.getPrenomClient(),
-                this.getEmail()
+                this.getEmail(),
+                this.calculDepense() + "",
         };
     }
 
