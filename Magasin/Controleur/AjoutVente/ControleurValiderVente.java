@@ -5,6 +5,7 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.*;
 import java.time.LocalDate;
+import java.util.Vector;
 
 public class ControleurValiderVente implements ActionListener {
     Magasin magasin;
@@ -50,11 +51,14 @@ public class ControleurValiderVente implements ActionListener {
 
                 String selArt = (String) modele.getValueAt(i, 0);
                 int idArt = Integer.parseInt(selArt.split(" - ")[0]);
-                Article lArt = magasin.rechercherArticleID(idArt);
+                Vector<Article> resultats = magasin.rechercherArticle((idArt + ""), "ID");
 
-                int qte = Integer.parseInt(modele.getValueAt(i, 3).toString());
+                if (!resultats.isEmpty()) {
+                    Article lArt = resultats.get(0); // Recup 1er elm
+                    int qte = Integer.parseInt(modele.getValueAt(i, 3).toString());
 
-                nouvelleVente.ajouterProduit(lArt, qte);
+                    nouvelleVente.ajouterProduit(lArt, qte);
+                }
             }
 
             nouvelleVente.validerVente();

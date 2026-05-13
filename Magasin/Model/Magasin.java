@@ -155,6 +155,22 @@ public class Magasin {
         return tabFournisseur;
     }
 
+    public Vector<Rayon> rechercherRayon(String saisie, String typeCritere) {
+        Vector<Rayon> tabRayon = new Vector<Rayon>();
+        for (int i = 0; i < listeRayon.size(); i++) {
+            Rayon r = listeRayon.get(i);
+
+            if (typeCritere.equals("ID") && (r.getIdRayon() + "").equals(saisie)) {
+                tabRayon.add(r);
+            } else if (typeCritere.equals("Nom Rayon") && r.getNomRayon().equalsIgnoreCase(saisie)) {
+                tabRayon.add(r);
+            } else if (typeCritere.equals("Capacité maximum") && (r.getCapacite() + "").equalsIgnoreCase(saisie)) {
+                tabRayon.add(r);
+            }
+        }
+        return tabRayon;
+    }
+
     // public Vector<Article> rechercherArticle(String saisie, String typeCritere) {
     // Vector<Article> tabArticle = new Vector<Article>();
     // for (int i = 0; i < listeClient.size(); i++) {
