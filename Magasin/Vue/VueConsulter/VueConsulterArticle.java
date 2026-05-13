@@ -22,6 +22,7 @@ public class VueConsulterArticle extends JFrame {
     public JTextField zoneRecherche = new JTextField(15);
 
     public DefaultTableModel modeleTable = new DefaultTableModel(colonnes, 0);
+
     public JTable tableArticle = new JTable(modeleTable);
 
     // Boutons spécifiques à la consultation

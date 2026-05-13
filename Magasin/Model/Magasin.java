@@ -214,67 +214,6 @@ public class Magasin {
         return tabVente;
     }
 
-    // public Vector<Article> rechercherArticle(String saisie, String typeCritere) {
-    // Vector<Article> tabArticle = new Vector<Article>();
-    // for (int i = 0; i < listeClient.size(); i++) {
-    // Client c = listeClient.get(i);
-
-    // if (typeCritere.equals("ID") && (c.getIdClient() + "").equals(saisie)) {
-    // tabClient.add(c);
-    // } else if (typeCritere.equals("Nom") &&
-    // c.getNomClient().equalsIgnoreCase(saisie)) {
-    // tabClient.add(c);
-    // } else if (typeCritere.equals("Prénom") &&
-    // c.getPrenomClient().equalsIgnoreCase(saisie)) {
-    // tabClient.add(c);
-    // } else if (typeCritere.equals("Email") &&
-    // c.getEmail().equalsIgnoreCase(saisie)) {
-    // tabClient.add(c);
-    // }
-    // }
-    // return tabArticle;
-    // }
-
-    // public Client rechercherClientID(int id) {
-    // for (int i = 0; i < listeClient.size(); i++) {
-    // Client c = listeClient.get(i);
-    // if (c.getIdClient() == id) {
-    // return c; // Trouvé
-    // }
-    // }
-    // return null;
-    // }
-
-    // public Article rechercherArticleID(int id) {
-    // for (int i = 0; i < listeArticle.size(); i++) {
-    // Article a = listeArticle.get(i);
-    // if (a.getIdArticle() == id) {
-    // return a; // Trouvé
-    // }
-    // }
-    // return null;
-    // }
-
-    // public Vendeur rechercherVendeurID(int id) {
-    // for (int i = 0; i < listeVendeur.size(); i++) {
-    // Vendeur v = listeVendeur.get(i);
-    // if (v.getIdVendeur() == id) {
-    // return v; // Trouvé
-    // }
-    // }
-    // return null;
-    // }
-
-    // public String[] getNomArticleTab() {
-    // String[] tab = new String[listeArticle.size()];
-
-    // for (int i = 0; i < tab.length; i++) {
-    // Article a = listeArticle.get(i);
-    // tab[i] = a.getIdArticle() + " - " + a.getNomProduit();
-    // }
-    // return tab;
-    // }
-
     public Article articleMoinsVendu() {
 
         if (listeArticle.isEmpty()) {
