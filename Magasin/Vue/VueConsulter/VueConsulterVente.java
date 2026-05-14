@@ -22,15 +22,14 @@ public class VueConsulterVente extends JFrame {
     public DefaultTableModel modeleTable = new DefaultTableModel(colonnes, 0) {
         @Override
         public boolean isCellEditable(int rowIndex, int columnIndex) {
-            // bloc ID Date Total
-            return !(columnIndex == 0 || columnIndex == 1 || columnIndex == 4);
+            // lecture seul
+            return false;
         }
     };
     public JTable tableVente = new JTable(modeleTable);
 
     // Boutons spécifiques à la consultation
     JButton btnChercher = new JButton("Chercher");
-    JButton btnEnregistrerModification = new JButton("Enregistrer les Modifications");
     JButton btnAnnuler = new JButton("Annuler");
 
     public Magasin magasin;
@@ -63,7 +62,6 @@ public class VueConsulterVente extends JFrame {
         JPanel boutons = new JPanel();
         boutons.add(btnAnnuler);
         boutons.add(btnChercher);
-        boutons.add(btnEnregistrerModification);
 
         this.add(recherchePanel, BorderLayout.NORTH);
         this.add(tableau, BorderLayout.CENTER);

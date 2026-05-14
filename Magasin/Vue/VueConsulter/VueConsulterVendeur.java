@@ -2,6 +2,7 @@ package Magasin.Vue.VueConsulter;
 
 import Magasin.Model.*;
 import Magasin.Controleur.*;
+import Magasin.Controleur.ConsulterClient.ControleurValiderModificationClient;
 import Magasin.Controleur.ConsulterVendeur.ControleurRechercherVendeur;
 
 import javax.swing.*;
@@ -81,6 +82,10 @@ public class VueConsulterVendeur extends JFrame {
                 modeleTable, m);
 
         btnChercher.addActionListener(controleurRecherche);
+
+        ControleurValiderModificationVendeur ctrlValider = new ControleurValiderModificationVendeur(m, modeleTable,
+                this);
+        btnEnregistrerModification.addActionListener(ctrlValider);
 
     }
 
