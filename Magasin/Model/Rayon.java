@@ -48,7 +48,7 @@ public class Rayon {
         return this.nomRayon;
     }
 
-    public void setRayon(String newRayon) {
+    public void setNomRayon(String newRayon) {
         this.nomRayon = newRayon;
     }
 
