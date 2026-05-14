@@ -2,7 +2,6 @@ package Magasin.Vue.VueConsulter;
 
 import Magasin.Model.*;
 import Magasin.Controleur.*;
-import Magasin.Controleur.ConsulterRayon.ControleurRechercherRayon;
 import Magasin.Controleur.ConsulterVendeur.ControleurRechercherVendeur;
 
 import javax.swing.*;
@@ -21,7 +20,13 @@ public class VueConsulterVendeur extends JFrame {
     public JLabel recherche = new JLabel("Valeur : ");
     public JTextField zoneRecherche = new JTextField(15);
 
-    public DefaultTableModel modeleTable = new DefaultTableModel(colonnes, 0);
+    public DefaultTableModel modeleTable = new DefaultTableModel(colonnes, 0) {
+        @Override
+        public boolean isCellEditable(int rowIndex, int columnIndex) {
+            // bloc ID CA
+            return !(columnIndex == 0 || columnIndex == 4);
+        }
+    };
     public JTable tableVendeur = new JTable(modeleTable);
 
     // Boutons spécifiques à la consultation

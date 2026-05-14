@@ -27,9 +27,9 @@ public class ControleurEnregistrerArticle implements ActionListener {
         String strNom = vue.zoneNom.getText();
         String strPrix = vue.zonePrix.getText().replace(",", "."); // On gère la virgule
         String strStock = vue.zoneStock.getText();
-        String strSport = vue.zoneSport.getText();
+        String strMarque = vue.zoneMarque.getText();
 
-        if (strNom.isEmpty() || strPrix.isEmpty() || strStock.isEmpty() || strSport.isEmpty()) {
+        if (strNom.isEmpty() || strPrix.isEmpty() || strStock.isEmpty() || strMarque.isEmpty()) {
             JOptionPane.showMessageDialog(vue,
                     "Erreur : remplir tous les champs !",
                     "Attention",
@@ -80,7 +80,7 @@ public class ControleurEnregistrerArticle implements ActionListener {
                 return;
             }
 
-            new Nourriture(strNom, prix, stock, strSport, rayonCible, fournisseur, magasin, strSaveur,
+            new Nourriture(strNom, prix, stock, strMarque, rayonCible, fournisseur, magasin, strSaveur,
                     datePeremption);
 
             JOptionPane.showMessageDialog(vue, "Nourriture enregistrée !");
@@ -99,7 +99,7 @@ public class ControleurEnregistrerArticle implements ActionListener {
                 return;
             }
 
-            new Vetement(strNom, prix, stock, strSport, rayonCible, fournisseur, magasin, taille, strCouleur);
+            new Vetement(strNom, prix, stock, strMarque, rayonCible, fournisseur, magasin, taille, strCouleur);
 
             JOptionPane.showMessageDialog(vue, "Vêtement enregistrée !");
             vue.dispose();
@@ -130,7 +130,7 @@ public class ControleurEnregistrerArticle implements ActionListener {
             Double doubleLargeur = Double.parseDouble(vue.zoneLargeur.getText());
             Double doublePoids = Double.parseDouble(vue.zonePoids.getText());
 
-            Materiel m = new Materiel(strNom, prix, stock, strSport, magasin, rayonCible,
+            Materiel m = new Materiel(strNom, prix, stock, strMarque, magasin, rayonCible,
                     fournisseur, doublePoids, doubleLongeur, doubleLargeur);
 
             JOptionPane.showMessageDialog(vue, "Matériel enregistrée !");

@@ -19,7 +19,13 @@ public class VueConsulterVente extends JFrame {
     public JLabel recherche = new JLabel("Valeur : ");
     public JTextField zoneRecherche = new JTextField(15);
 
-    public DefaultTableModel modeleTable = new DefaultTableModel(colonnes, 0);
+    public DefaultTableModel modeleTable = new DefaultTableModel(colonnes, 0) {
+        @Override
+        public boolean isCellEditable(int rowIndex, int columnIndex) {
+            // bloc ID Date Total
+            return !(columnIndex == 0 || columnIndex == 1 || columnIndex == 4);
+        }
+    };
     public JTable tableVente = new JTable(modeleTable);
 
     // Boutons spécifiques à la consultation

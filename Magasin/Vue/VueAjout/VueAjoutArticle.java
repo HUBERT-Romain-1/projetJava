@@ -12,13 +12,13 @@ public class VueAjoutArticle extends JFrame {
     public JLabel nom = new JLabel("Nom de L'article:");
     public JLabel prix = new JLabel("Prix de L'article :");
     public JLabel stock = new JLabel("Quantité :");
-    public JLabel sport = new JLabel("Sport :");
+    public JLabel marque = new JLabel("Marque :");
     public JLabel rayon = new JLabel("Rayon :");
 
     public JTextField zoneNom = new JTextField();
     public JTextField zonePrix = new JTextField();
     public JTextField zoneStock = new JTextField();
-    public JTextField zoneSport = new JTextField();
+    public JTextField zoneMarque = new JTextField();
 
     public JComboBox<Rayon> comboRayon;
 
@@ -84,8 +84,8 @@ public class VueAjoutArticle extends JFrame {
         formulaire.add(stock);
         formulaire.add(zoneStock);
 
-        formulaire.add(sport);
-        formulaire.add(zoneSport);
+        formulaire.add(marque);
+        formulaire.add(zoneMarque);
 
         formulaire.add(typeLabel);
         formulaire.add(comboType);
@@ -142,7 +142,7 @@ public class VueAjoutArticle extends JFrame {
                 zoneNom,
                 zonePrix,
                 zoneStock,
-                zoneSport,
+                zoneMarque,
                 comboFournisseur,
                 this);
 

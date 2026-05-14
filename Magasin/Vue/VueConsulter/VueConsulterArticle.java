@@ -3,7 +3,7 @@ package Magasin.Vue.VueConsulter;
 import Magasin.Model.*;
 import Magasin.Controleur.*;
 import Magasin.Controleur.ConsulterArticle.ControleurRechercherArticle;
-import Magasin.Controleur.ConsulterClient.ControleurRechercherClient;
+import Magasin.Controleur.ConsulterArticle.ControleurValiderModificationArticle;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -21,7 +21,13 @@ public class VueConsulterArticle extends JFrame {
     public JLabel recherche = new JLabel("Valeur : ");
     public JTextField zoneRecherche = new JTextField(15);
 
-    public DefaultTableModel modeleTable = new DefaultTableModel(colonnes, 0);
+    public DefaultTableModel modeleTable = new DefaultTableModel(colonnes, 0) {
+        @Override
+        public boolean isCellEditable(int rowIndex, int columnIndex) {
+            // bloc ID Fournisseur Caractéristiques
+            return !(columnIndex == 0 || columnIndex == 5 || columnIndex == 6);
+        }
+    };
 
     public JTable tableArticle = new JTable(modeleTable);
 
@@ -77,6 +83,10 @@ public class VueConsulterArticle extends JFrame {
                 modeleTable, m);
 
         btnChercher.addActionListener(controleurRecherche);
+
+        ControleurValiderModificationArticle ctrValider = new ControleurValiderModificationArticle(m, modeleTable,
+                this);
+        btnEnregistrerModification.addActionListener(ctrValider);
 
     }
 

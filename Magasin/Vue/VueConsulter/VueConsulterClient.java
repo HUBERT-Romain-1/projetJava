@@ -21,7 +21,13 @@ public class VueConsulterClient extends JFrame {
     public JLabel recherche = new JLabel("Valeur : ");
     public JTextField zoneRecherche = new JTextField(15);
 
-    public DefaultTableModel modeleTable = new DefaultTableModel(colonnes, 0);
+    public DefaultTableModel modeleTable = new DefaultTableModel(colonnes, 0) {
+        @Override
+        public boolean isCellEditable(int rowIndex, int columnIndex) {
+            // bloc ID Calcul Depense
+            return !(columnIndex == 0 || columnIndex == 4);
+        }
+    };
     public JTable tableClient = new JTable(modeleTable);
 
     // Boutons spécifiques à la consultation

@@ -94,124 +94,152 @@ public class Magasin {
 
     public Vector<Article> rechercherArticle(String saisie, String typeCritere) {
         Vector<Article> tabArticle = new Vector<Article>();
+        String[] criteres = Article.getCriteresRecherche();
+
         for (int i = 0; i < listeArticle.size(); i++) {
             Article a = listeArticle.get(i);
+            String[] donneesArticle = a.getLigneTableau();
 
-            if (typeCritere.equals("ID") && (a.getIdArticle() + "").equals(saisie)) {
-                tabArticle.add(a);
-            } else if (typeCritere.equals("Nom Produit") &&
-                    a.getNomProduit().equalsIgnoreCase(saisie)) {
-                tabArticle.add(a);
-            } else if (typeCritere.equals("Prix") &&
-                    (a.getPrix() + "").equals(saisie)) {
-                tabArticle.add(a);
-            } else if (typeCritere.equals("Stock") &&
-                    (a.getStock() + "").equals(saisie)) {
-                tabArticle.add(a);
-            } else if (typeCritere.equals("Sport") &&
-                    (a.getSport() + "").equals(saisie)) {
-                tabArticle.add(a);
-            } else if (typeCritere.equals("Fournisseur") &&
-                    (a.getFournisseur() + "").equals(saisie)) {
-                tabArticle.add(a);
+            // on cherche l'indice du critère
+            for (int j = 0; j < criteres.length; j++) {
+
+                // Si Bon criteres
+                if (typeCritere.equals(criteres[j])) {
+
+                    // On regarde si saisie est inclu dans la donneesArticles
+                    if (donneesArticle[j].equalsIgnoreCase(saisie)) {
+                        tabArticle.add(a);
+                    }
+                    break;
+                }
             }
         }
         return tabArticle;
     }
 
     public Vector<Client> rechercherClient(String saisie, String typeCritere) {
-        Vector<Client> tabClient = new Vector<Client>();
+        Vector<Client> tab = new Vector<Client>();
+        String[] criteres = Client.getCriteresRecherche();
+
         for (int i = 0; i < listeClient.size(); i++) {
             Client c = listeClient.get(i);
+            String[] donneesArticle = c.getLigneTableau();
 
-            if (typeCritere.equals("ID") && (c.getIdClient() + "").equals(saisie)) {
-                tabClient.add(c);
-            } else if (typeCritere.equals("Nom") && c.getNomClient().equalsIgnoreCase(saisie)) {
-                tabClient.add(c);
-            } else if (typeCritere.equals("Prénom") && c.getPrenomClient().equalsIgnoreCase(saisie)) {
-                tabClient.add(c);
-            } else if (typeCritere.equals("Email") && c.getEmail().equalsIgnoreCase(saisie)) {
-                tabClient.add(c);
+            // on cherche l'indice du critère
+            for (int j = 0; j < criteres.length; j++) {
+
+                // Si Bon criteres
+                if (typeCritere.equals(criteres[j])) {
+
+                    // On regarde si saisie est inclu dans la donneesArticles
+                    if (donneesArticle[j].equalsIgnoreCase(saisie)) {
+                        tab.add(c);
+                    }
+                    break;
+                }
             }
         }
-        return tabClient;
+        return tab;
     }
 
     public Vector<Fournisseur> rechercherFournisseur(String saisie, String typeCritere) {
-        Vector<Fournisseur> tabFournisseur = new Vector<Fournisseur>();
+        Vector<Fournisseur> tab = new Vector<Fournisseur>();
+        String[] criteres = Fournisseur.getCriteresRecherche();
+
         for (int i = 0; i < listeFournisseur.size(); i++) {
             Fournisseur f = listeFournisseur.get(i);
+            String[] donneesArticle = f.getLigneTableau();
 
-            if (typeCritere.equals("ID") && (f.getIdFournisseur() + "").equals(saisie)) {
-                tabFournisseur.add(f);
-            } else if (typeCritere.equals("Nom fournisseur") &&
-                    f.getNomFournisseur().equalsIgnoreCase(saisie)) {
-                tabFournisseur.add(f);
-            } else if (typeCritere.equals("Adresse fournisseur") &&
-                    f.getAdresseFournisseur().equalsIgnoreCase(saisie)) {
-                tabFournisseur.add(f);
+            // on cherche l'indice du critère
+            for (int j = 0; j < criteres.length; j++) {
+
+                // Si Bon criteres
+                if (typeCritere.equals(criteres[j])) {
+
+                    // On regarde si saisie est inclu dans la donneesArticles
+                    if (donneesArticle[j].equalsIgnoreCase(saisie)) {
+                        tab.add(f);
+                    }
+                    break;
+                }
             }
         }
-        return tabFournisseur;
+        return tab;
     }
 
     public Vector<Rayon> rechercherRayon(String saisie, String typeCritere) {
-        Vector<Rayon> tabRayon = new Vector<Rayon>();
+        Vector<Rayon> tab = new Vector<Rayon>();
+        String[] criteres = Rayon.getCriteresRecherche();
+
         for (int i = 0; i < listeRayon.size(); i++) {
             Rayon r = listeRayon.get(i);
+            String[] donneesArticle = r.getLigneTableau();
 
-            if (typeCritere.equals("ID") && (r.getIdRayon() + "").equals(saisie)) {
-                tabRayon.add(r);
-            } else if (typeCritere.equals("Nom Rayon") && r.getNomRayon().equalsIgnoreCase(saisie)) {
-                tabRayon.add(r);
-            } else if (typeCritere.equals("Capacité maximum") && (r.getCapacite() + "").equalsIgnoreCase(saisie)) {
-                tabRayon.add(r);
+            // on cherche l'indice du critère
+            for (int j = 0; j < criteres.length; j++) {
+
+                // Si Bon criteres
+                if (typeCritere.equals(criteres[j])) {
+
+                    // On regarde si saisie est inclu dans la donneesArticles
+                    if (donneesArticle[j].equalsIgnoreCase(saisie)) {
+                        tab.add(r);
+                    }
+                    break;
+                }
             }
         }
-        return tabRayon;
+        return tab;
     }
 
-    // return new String[] { "ID", "Nom", "Prénom", "Téléphone" , "CA"};
     public Vector<Vendeur> rechercherVendeur(String saisie, String typeCritere) {
-        Vector<Vendeur> tabVendeur = new Vector<Vendeur>();
+        Vector<Vendeur> tab = new Vector<Vendeur>();
+        String[] criteres = Vendeur.getCriteresRecherche();
+
         for (int i = 0; i < listeVendeur.size(); i++) {
             Vendeur v = listeVendeur.get(i);
+            String[] donneesArticle = v.getLigneTableau();
 
-            if (typeCritere.equals("ID") && (v.getIdVendeur() + "").equals(saisie)) {
-                tabVendeur.add(v);
-            } else if (typeCritere.equals("Nom") && v.getNomVendeur().equalsIgnoreCase(saisie)) {
-                tabVendeur.add(v);
-            } else if (typeCritere.equals("Prénom") && v.getPrenomVendeur().equalsIgnoreCase(saisie)) {
-                tabVendeur.add(v);
-            } else if (typeCritere.equals("Téléphone") && v.getTelephone().equalsIgnoreCase(saisie)) {
-                tabVendeur.add(v);
-            } else if (typeCritere.equals("CA") && (v.calculCA() + "").equalsIgnoreCase(saisie)) {
-                tabVendeur.add(v);
+            // on cherche l'indice du critère
+            for (int j = 0; j < criteres.length; j++) {
+
+                // Si Bon criteres
+                if (typeCritere.equals(criteres[j])) {
+
+                    // On regarde si saisie est inclu dans la donneesArticles
+                    if (donneesArticle[j].equalsIgnoreCase(saisie)) {
+                        tab.add(v);
+                    }
+                    break;
+                }
             }
         }
-        return tabVendeur;
+        return tab;
     }
 
-    // return new String[] { "ID Vente", "Date Vente", "Nom Client", "Nom Vendeur",
-    // "Total" };
     public Vector<Vente> rechercherVente(String saisie, String typeCritere) {
-        Vector<Vente> tabVente = new Vector<Vente>();
+        Vector<Vente> tab = new Vector<Vente>();
+        String[] criteres = Vente.getCriteresRecherche();
+
         for (int i = 0; i < listeVente.size(); i++) {
             Vente v = listeVente.get(i);
+            String[] donneesArticle = v.getLigneTableau();
 
-            if (typeCritere.equals("ID Vente") && (v.getIdVente() + "").equals(saisie)) {
-                tabVente.add(v);
-            } else if (typeCritere.equals("Date Vente") && (v.getDateVente() + "").equalsIgnoreCase(saisie)) {
-                tabVente.add(v);
-            } else if (typeCritere.equals("Nom Client") && (v.getClient() + "").equalsIgnoreCase(saisie)) {
-                tabVente.add(v);
-            } else if (typeCritere.equals("Nom Vendeur") && (v.getVendeur() + "").equalsIgnoreCase(saisie)) {
-                tabVente.add(v);
-            } else if (typeCritere.equals("Total ") && (v.getSommeTotal() + "").equalsIgnoreCase(saisie)) {
-                tabVente.add(v);
+            // on cherche l'indice du critère
+            for (int j = 0; j < criteres.length; j++) {
+
+                // Si Bon criteres
+                if (typeCritere.equals(criteres[j])) {
+
+                    // On regarde si saisie est inclu dans la donneesArticles
+                    if (donneesArticle[j].equalsIgnoreCase(saisie)) {
+                        tab.add(v);
+                    }
+                    break;
+                }
             }
         }
-        return tabVente;
+        return tab;
     }
 
     public Article articleMoinsVendu() {

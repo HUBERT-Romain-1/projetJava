@@ -5,11 +5,11 @@ import java.time.LocalDate;
 import java.util.*;
 
 public class Article {
-    public Article(String nom, double prix, int stock, String sport, Rayon rayon, Fournisseur f, Magasin m) {
+    public Article(String nom, double prix, int stock, String marque, Rayon rayon, Fournisseur f, Magasin m) {
         this.nomProduit = nom;
         this.prix = prix;
         this.stock = stock;
-        this.sport = sport;
+        this.marque = marque;
         this.fournisseur = f;
         this.magasin = m;
 
@@ -25,14 +25,14 @@ public class Article {
     private String nomProduit;
     private double prix;
     private int stock;
-    private String sport;
+    private String marque;
     private Fournisseur fournisseur;
     private Magasin magasin;
     private Vector<Rayon> listeRayon = new Vector<Rayon>();
     private Vector<LigneVente> listeLigneVente = new Vector<LigneVente>();
 
     public static String[] getCriteresRecherche() {
-        return new String[] { "ID", "Nom Produit", "Prix", "Stock", "Sport", "Fournisseur", "Caractéristiques" };
+        return new String[] { "ID", "Nom Produit", "Prix", "Stock", "Marque", "Fournisseur", "Caractéristiques" };
     }
 
     public String[] getLigneTableau() {
@@ -41,7 +41,7 @@ public class Article {
                 this.getNomProduit(),
                 this.getPrix() + " Euro",
                 this.getStock() + "",
-                this.getSport(),
+                this.getMarque(),
                 this.getFournisseur().getNomFournisseur() + "",
                 this.getInfosSpecifiques()
         };
@@ -79,8 +79,8 @@ public class Article {
         }
     }
 
-    public void setSport(String newSport) {
-        this.sport = newSport;
+    public void setMarque(String newMarque) {
+        this.marque = newMarque;
     }
 
     public int getIdArticle() {
@@ -99,8 +99,8 @@ public class Article {
         return this.stock;
     }
 
-    public String getSport() {
-        return this.sport;
+    public String getMarque() {
+        return this.marque;
     }
 
     public Fournisseur getFournisseur() {
