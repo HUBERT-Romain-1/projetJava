@@ -54,6 +54,14 @@ public class Fournisseur {
         return this.magasin.getNomMagasin();
     }
 
+    public void setNomFournisseur(String nomF) {
+        this.nomFournisseur = nomF;
+    }
+
+    public void setAdresse(String adresse) {
+        this.lieuFournisseur = adresse;
+    }
+
     public String toString() {
         return this.getIdFournisseur() + " - " + this.getNomFournisseur().toUpperCase();
     }
