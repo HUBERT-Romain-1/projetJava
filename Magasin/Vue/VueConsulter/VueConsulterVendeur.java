@@ -4,6 +4,7 @@ import Magasin.Model.*;
 import Magasin.Controleur.*;
 import Magasin.Controleur.ConsulterClient.ControleurValiderModificationClient;
 import Magasin.Controleur.ConsulterVendeur.ControleurRechercherVendeur;
+import Magasin.Controleur.ConsulterVendeur.ControleurValiderModificationVendeur;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;

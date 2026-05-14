@@ -58,7 +58,7 @@ public class Vendeur {
     }
 
     public void setPrenomVendeur(String newPrenom) {
-        this.nomVendeur = newPrenom;
+        this.prenomVendeur = newPrenom;
     }
 
     public String getTelephone() {
@@ -66,7 +66,7 @@ public class Vendeur {
     }
 
     public void setTelephone(String newTel) {
-        this.nomVendeur = newTel;
+        this.telephone = newTel;
     }
 
     public double calculCA() {
