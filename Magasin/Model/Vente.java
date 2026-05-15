@@ -76,6 +76,8 @@ public class Vente {
         if (a.getStock() >= qte) {
             LigneVente lv = new LigneVente(qte, a, this);
             this.listeLigneVente.add(lv);
+
+            a.getListeLigneVente().add(lv);
             a.setStock(a.getStock() - qte);
             this.SommeTotal += lv.CalculTotalLigne();
             return lv;

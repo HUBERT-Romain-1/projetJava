@@ -2,9 +2,7 @@ package Magasin.Vue.VueConsulter;
 
 import Magasin.Model.*;
 import Magasin.Controleur.*;
-import Magasin.Controleur.ConsulterClient.ControleurValiderModificationClient;
-import Magasin.Controleur.ConsulterVendeur.ControleurRechercherVendeur;
-import Magasin.Controleur.ConsulterVendeur.ControleurValiderModificationVendeur;
+import Magasin.Controleur.ConsulterVendeur.*;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;

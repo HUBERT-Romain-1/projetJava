@@ -31,6 +31,33 @@ public class Article {
     private Vector<Rayon> listeRayon = new Vector<Rayon>();
     private Vector<LigneVente> listeLigneVente = new Vector<LigneVente>();
 
+    public static String[] getCriteresStats() {
+        return new String[] {
+                "Tous les articles",
+                "Bientôt en rupture",
+                "Meilleur Chiffre  d'Affaire",
+                "Bientôt périmé",
+                "Périmé"
+        };
+    }
+
+    public static String[] getCriteresRechercheStat() {
+        return new String[] { "ID", "Nom Produit", "Prix", "Stock", "Marque", "Fournisseur", "Caractéristiques", "CA" };
+    }
+
+    public String[] getLigneTableauStat() {
+        return new String[] {
+                this.getIdArticle() + "",
+                this.getNomProduit(),
+                this.getPrix() + " Euro",
+                this.getStock() + "",
+                this.getMarque(),
+                this.getFournisseur().getNomFournisseur() + "",
+                this.getInfosSpecifiques(),
+                this.calculerArgentRapporter() + "",
+        };
+    }
+
     public static String[] getCriteresRecherche() {
         return new String[] { "ID", "Nom Produit", "Prix", "Stock", "Marque", "Fournisseur", "Caractéristiques" };
     }

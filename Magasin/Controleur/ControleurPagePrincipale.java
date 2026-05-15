@@ -14,6 +14,7 @@ import Magasin.Vue.VueConsulter.VueConsulterFournisseur;
 import Magasin.Vue.VueConsulter.VueConsulterRayon;
 import Magasin.Vue.VueConsulter.VueConsulterVendeur;
 import Magasin.Vue.VueConsulter.VueConsulterVente;
+import Magasin.Vue.VueStatistique.VueStatistique;
 
 import javax.swing.*;
 import java.awt.event.*;
@@ -81,9 +82,9 @@ public class ControleurPagePrincipale implements ActionListener {
             vue = new VueConsulterRayon(magasin);
         }
 
-        // else {
-        // vue = new VueStatistique(magasin);
-        // }
+        else {
+            vue = new VueStatistique(magasin);
+        }
 
         if (vue != null) {
             vue.pack();

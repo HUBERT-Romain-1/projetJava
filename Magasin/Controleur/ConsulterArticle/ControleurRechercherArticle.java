@@ -38,7 +38,7 @@ public class ControleurRechercherArticle implements ActionListener {
             resultats = magasin.getListeArticle();
         } else {
 
-            // la liste des Client rechercher Par le critere
+            // la liste des Articles rechercher Par le critere
             resultats = magasin.rechercherArticle(texte, critere);
         }
 

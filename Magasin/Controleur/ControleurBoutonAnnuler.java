@@ -7,7 +7,7 @@ import javax.swing.JOptionPane;
 
 public class ControleurBoutonAnnuler implements ActionListener {
 
-    private JFrame fenetre;
+    JFrame fenetre;
 
     public ControleurBoutonAnnuler(JFrame f) {
         this.fenetre = f;

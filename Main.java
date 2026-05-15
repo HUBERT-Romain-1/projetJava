@@ -33,6 +33,9 @@ public class Main {
                                 "Football", football, abc, monMagasin,
                                 "L", "Bleu");
 
+                Article raquette = new Article("raquette de tennis", 36.0, 3, "B", tennis, abc, monMagasin);
+                Article raquette2 = new Article("raquette de tennis", 36.0, 0, "B", tennis, abc, monMagasin);
+
                 Vendeur vendeur1 = new Vendeur("A", "Bea", "98049409", monMagasin);
                 Vendeur vendeur2 = new Vendeur("Dupond", "Patrick", "0123654456",
                                 monMagasin);
@@ -41,19 +44,7 @@ public class Main {
                 vente1.ajouterProduit(ballonFootball, 2);
                 vente1.ajouterProduit(maillotFoot, 1);
 
-                vente1.toString();
                 vente1.validerVente();
-
-                // Article top = monMagasin.articlePlusVendu();
-                // System.out.println("Le meilleur produit : " + top.getNomProduit()
-                // + " avec " + top.calculerQuantiteVendue() + " unités vendues.");
-
-                // Article pire = monMagasin.articleMoinsVendu();
-
-                // System.out.println("Le pire produit : " + pire.getNomProduit()
-                // + " avec " + pire.calculerQuantiteVendue() + " unités vendues.");
-
-                // monMagasin.affichageMagasin();
 
         }
 }
